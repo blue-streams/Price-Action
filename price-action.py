@@ -24,6 +24,14 @@ from collections import defaultdict
 
 DATA_FILE = "habit_data.json"
 MAX_VISIBLE_CANDLES = 35
+TIMEFRAME_OPTIONS = [
+    ("1D", "1 day"),
+    ("1W", "1 week"),
+    ("1M", "1 month"),
+    ("6M", "6 months"),
+    ("1Y", "1 year"),
+    ("YTD", "YTD"),
+]
 
 DEFAULT_HABITS = [
     {"name": "Exercise",        "points":  30, "emoji": "🏋️"},
@@ -423,6 +431,8 @@ class HabitTrackerApp:
         self._chart_view_start = 0
         self._visible_start = 0
         self._visible_len = 0
+        self._chart_timeframe = "6M"
+        self._timeframe_buttons = {}
 
         self._build_ui()
         self._refresh_chart()
@@ -599,6 +609,30 @@ class HabitTrackerApp:
                  bg="#0f0f0f", fg="#555577",
                  font=("Courier New", 9)).pack(side=tk.LEFT, pady=(4, 0))
 
+        tabs = tk.Frame(right, bg="#0f0f0f")
+        tabs.pack(fill=tk.X, pady=(8, 2))
+        tk.Label(tabs, text="Timeframe:",
+                 bg="#0f0f0f", fg="#888888",
+                 font=("Courier New", 9)).pack(side=tk.LEFT, padx=(0, 8))
+        for tf_key, tf_label in TIMEFRAME_OPTIONS:
+            btn = tk.Button(
+                tabs,
+                text=tf_label,
+                bg="#1a1a2e",
+                fg="#aaaaaa",
+                activebackground="#252545",
+                activeforeground="#ffffff",
+                relief="flat",
+                bd=0,
+                padx=8,
+                pady=3,
+                font=("Courier New", 9),
+                command=lambda key=tf_key: self._set_chart_timeframe(key),
+            )
+            btn.pack(side=tk.LEFT, padx=(0, 4))
+            self._timeframe_buttons[tf_key] = btn
+        self._update_timeframe_tabs()
+
         self.fig, self.ax = plt.subplots(facecolor="#0f0f0f")
         self.ax.set_facecolor("#0f0f0f")
         self.canvas_widget = FigureCanvasTkAgg(self.fig, master=right)
@@ -684,6 +718,52 @@ class HabitTrackerApp:
         except (TypeError, ValueError):
             self._chart_view_start = 0
         self._refresh_chart()
+
+    def _set_chart_timeframe(self, timeframe_key):
+        if timeframe_key not in self._timeframe_buttons:
+            return
+        if self._chart_timeframe == timeframe_key:
+            return
+        self._chart_timeframe = timeframe_key
+        self._chart_view_start = 0
+        self._update_timeframe_tabs()
+        self._refresh_chart()
+
+    def _update_timeframe_tabs(self):
+        for key, btn in self._timeframe_buttons.items():
+            active = key == self._chart_timeframe
+            btn.config(
+                bg="#2b4a70" if active else "#1a1a2e",
+                fg="#ffffff" if active else "#aaaaaa",
+                relief="sunken" if active else "flat",
+            )
+
+    def _filter_candles_by_timeframe(self, candles):
+        if not candles:
+            return candles
+        candle_dates = [datetime.date.fromisoformat(c["date"]) for c in candles]
+        anchor = candle_dates[-1]
+        tf = self._chart_timeframe
+        if tf == "1D":
+            start = anchor
+        elif tf == "1W":
+            start = anchor - datetime.timedelta(days=6)
+        elif tf == "1M":
+            start = anchor - datetime.timedelta(days=29)
+        elif tf == "6M":
+            start = anchor - datetime.timedelta(days=182)
+        elif tf == "1Y":
+            start = anchor - datetime.timedelta(days=365)
+        elif tf == "YTD":
+            start = datetime.date(anchor.year, 1, 1)
+        else:
+            return candles
+
+        filtered = [
+            c for c, d in zip(candles, candle_dates)
+            if start <= d <= anchor
+        ]
+        return filtered if filtered else [candles[-1]]
 
     # ── Display ───────────────────────────────────────────────────────────── #
 
@@ -945,8 +1025,9 @@ class HabitTrackerApp:
 
     def _refresh_chart(self):
         self.ax.clear()
-        candles = compute_candlestick_data(
+        all_candles = compute_candlestick_data(
             self.data["log"], self.data.get("manual_close", {}))
+        candles = self._filter_candles_by_timeframe(all_candles)
         self._candle_dates = [c["date"] for c in candles]
 
         if not candles:
@@ -969,6 +1050,16 @@ class HabitTrackerApp:
         self._visible_start = start
         self._visible_len = len(visible_candles)
 
+        # Keep candle body size and Y-axis padding proportional to the
+        # currently visible value range so each timeframe scales naturally.
+        y_min = min(c["low"] for c in visible_candles)
+        y_max = max(c["high"] for c in visible_candles)
+        visible_span = y_max - y_min
+        if visible_span <= 0:
+            ref = max(abs(y_max), 1.0)
+            visible_span = ref * 0.1
+        min_body_height = max(visible_span * 0.015, 0.05)
+
         width = 0.5
         for i, c in enumerate(visible_candles):
             bearish = c["close"] < c["open"] or c["close"] < 0
@@ -980,7 +1071,7 @@ class HabitTrackerApp:
 
             # Body
             body_bottom = min(c["open"], c["close"])
-            body_height = max(abs(c["close"] - c["open"]), 0.5)
+            body_height = max(abs(c["close"] - c["open"]), min_body_height)
             self.ax.add_patch(mpatches.FancyBboxPatch(
                 (i - width / 2, body_bottom), width, body_height,
                 boxstyle="square,pad=0", linewidth=0,
@@ -1005,21 +1096,18 @@ class HabitTrackerApp:
             [c["date"][5:] for c in visible_candles],
             rotation=40, ha="right", color="#888888", fontsize=8)
 
-        # Dynamic y-scale: fit only the visible candle window.
-        if visible_candles:
-            y_min = min(c["low"] for c in visible_candles)
-            y_max = max(c["high"] for c in visible_candles)
-            span = max(y_max - y_min, 1.0)
-            pad = max(span * 0.08, 3.0)
-            self.ax.set_ylim(y_min - pad, y_max + pad)
+        # Dynamic Y-scale for the visible timeframe.
+        pad = max(visible_span * 0.10, min_body_height * 1.5)
+        self.ax.set_ylim(y_min - pad, y_max + pad)
 
         self.ax.yaxis.set_tick_params(colors="#888888", labelsize=8)
         for spine in self.ax.spines.values():
             spine.set_color("#222222")
         self.ax.tick_params(colors="#888888", which="both")
         self.ax.set_ylabel("Cumulative Points", color="#888888", fontsize=9)
+        timeframe_label = dict(TIMEFRAME_OPTIONS).get(self._chart_timeframe, self._chart_timeframe)
         self.ax.set_title(
-            "Daily Habit Points — Candlestick View  (click a candle to edit)",
+            f"Daily Habit Points — Candlestick View [{timeframe_label}]  (click a candle to edit)",
             color="#aaaaaa", fontsize=10, pad=10)
         self.ax.yaxis.grid(True, color="#1e1e1e", linewidth=0.5, zorder=0)
 

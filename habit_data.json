@@ -1,0 +1,1544 @@
+{
+  "habits": [
+    {
+      "name": "Exercise",
+      "points": 30,
+      "emoji": "\ud83c\udfcb\ufe0f"
+    },
+    {
+      "name": "Read 30 min",
+      "points": 20,
+      "emoji": "\ud83d\udcda"
+    },
+    {
+      "name": "Meditate",
+      "points": 15,
+      "emoji": "\ud83e\uddd8"
+    },
+    {
+      "name": "Drink 2L water",
+      "points": 10,
+      "emoji": "\ud83d\udca7"
+    },
+    {
+      "name": "Sleep 8 hrs",
+      "points": 25,
+      "emoji": "\ud83d\ude34"
+    },
+    {
+      "name": "Skipped workout",
+      "points": -200,
+      "emoji": "\u274c"
+    },
+    {
+      "name": "Junk food",
+      "points": -150,
+      "emoji": "\ud83c\udf54"
+    },
+    {
+      "name": "Screen > 4 hrs",
+      "points": -100,
+      "emoji": "\ud83d\udcf1"
+    },
+    {
+      "name": "Imported daily points",
+      "points": 110,
+      "emoji": "\u2605"
+    }
+  ],
+  "log": [
+    {
+      "date": "2025-12-28",
+      "habit": "Imported daily points",
+      "points": 110,
+      "timestamp": "2025-12-28T12:00:00"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Imported daily points",
+      "points": 879,
+      "timestamp": "2025-12-29T12:00:00"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Imported daily points",
+      "points": 1279,
+      "timestamp": "2025-12-30T12:00:00"
+    },
+    {
+      "date": "2025-12-31",
+      "habit": "Imported daily points",
+      "points": 190,
+      "timestamp": "2025-12-31T12:00:00"
+    },
+    {
+      "date": "2026-01-01",
+      "habit": "Imported daily points",
+      "points": 1878,
+      "timestamp": "2026-01-01T12:00:00"
+    },
+    {
+      "date": "2026-01-02",
+      "habit": "Imported daily points",
+      "points": 1166,
+      "timestamp": "2026-01-02T12:00:00"
+    },
+    {
+      "date": "2026-01-03",
+      "habit": "Imported daily points",
+      "points": 213,
+      "timestamp": "2026-01-03T12:00:00"
+    },
+    {
+      "date": "2026-01-04",
+      "habit": "Imported daily points",
+      "points": -740,
+      "timestamp": "2026-01-04T12:00:00"
+    },
+    {
+      "date": "2026-01-05",
+      "habit": "Imported daily points",
+      "points": -148,
+      "timestamp": "2026-01-05T12:00:00"
+    },
+    {
+      "date": "2026-01-06",
+      "habit": "Imported daily points",
+      "points": -377,
+      "timestamp": "2026-01-06T12:00:00"
+    },
+    {
+      "date": "2026-01-07",
+      "habit": "Imported daily points",
+      "points": -685,
+      "timestamp": "2026-01-07T12:00:00"
+    },
+    {
+      "date": "2026-01-08",
+      "habit": "Imported daily points",
+      "points": 731,
+      "timestamp": "2026-01-08T12:00:00"
+    },
+    {
+      "date": "2026-01-09",
+      "habit": "Imported daily points",
+      "points": 1641,
+      "timestamp": "2026-01-09T12:00:00"
+    },
+    {
+      "date": "2026-01-10",
+      "habit": "Imported daily points",
+      "points": 1882,
+      "timestamp": "2026-01-10T12:00:00"
+    },
+    {
+      "date": "2026-01-11",
+      "habit": "Imported daily points",
+      "points": -134,
+      "timestamp": "2026-01-11T12:00:00"
+    },
+    {
+      "date": "2026-01-12",
+      "habit": "Imported daily points",
+      "points": 1072,
+      "timestamp": "2026-01-12T12:00:00"
+    },
+    {
+      "date": "2026-01-13",
+      "habit": "Imported daily points",
+      "points": 1329,
+      "timestamp": "2026-01-13T12:00:00"
+    },
+    {
+      "date": "2026-01-14",
+      "habit": "Imported daily points",
+      "points": -706,
+      "timestamp": "2026-01-14T12:00:00"
+    },
+    {
+      "date": "2026-01-15",
+      "habit": "Imported daily points",
+      "points": 942,
+      "timestamp": "2026-01-15T12:00:00"
+    },
+    {
+      "date": "2026-01-16",
+      "habit": "Imported daily points",
+      "points": 1445,
+      "timestamp": "2026-01-16T12:00:00"
+    },
+    {
+      "date": "2026-01-17",
+      "habit": "Imported daily points",
+      "points": 229,
+      "timestamp": "2026-01-17T12:00:00"
+    },
+    {
+      "date": "2026-01-18",
+      "habit": "Imported daily points",
+      "points": -42,
+      "timestamp": "2026-01-18T12:00:00"
+    },
+    {
+      "date": "2026-01-19",
+      "habit": "Imported daily points",
+      "points": -241,
+      "timestamp": "2026-01-19T12:00:00"
+    },
+    {
+      "date": "2026-01-20",
+      "habit": "Imported daily points",
+      "points": 1657,
+      "timestamp": "2026-01-20T12:00:00"
+    },
+    {
+      "date": "2026-01-21",
+      "habit": "Imported daily points",
+      "points": 1911,
+      "timestamp": "2026-01-21T12:00:00"
+    },
+    {
+      "date": "2026-01-22",
+      "habit": "Imported daily points",
+      "points": -595,
+      "timestamp": "2026-01-22T12:00:00"
+    },
+    {
+      "date": "2026-01-23",
+      "habit": "Imported daily points",
+      "points": 231,
+      "timestamp": "2026-01-23T12:00:00"
+    },
+    {
+      "date": "2026-01-24",
+      "habit": "Imported daily points",
+      "points": 983,
+      "timestamp": "2026-01-24T12:00:00"
+    },
+    {
+      "date": "2026-01-25",
+      "habit": "Imported daily points",
+      "points": -324,
+      "timestamp": "2026-01-25T12:00:00"
+    },
+    {
+      "date": "2026-01-26",
+      "habit": "Imported daily points",
+      "points": 702,
+      "timestamp": "2026-01-26T12:00:00"
+    },
+    {
+      "date": "2026-01-27",
+      "habit": "Imported daily points",
+      "points": -186,
+      "timestamp": "2026-01-27T12:00:00"
+    },
+    {
+      "date": "2026-01-28",
+      "habit": "Imported daily points",
+      "points": 733,
+      "timestamp": "2026-01-28T12:00:00"
+    },
+    {
+      "date": "2026-01-29",
+      "habit": "Imported daily points",
+      "points": 967,
+      "timestamp": "2026-01-29T12:00:00"
+    },
+    {
+      "date": "2026-01-30",
+      "habit": "Imported daily points",
+      "points": -611,
+      "timestamp": "2026-01-30T12:00:00"
+    },
+    {
+      "date": "2026-01-31",
+      "habit": "Imported daily points",
+      "points": -477,
+      "timestamp": "2026-01-31T12:00:00"
+    },
+    {
+      "date": "2026-02-01",
+      "habit": "Imported daily points",
+      "points": 1019,
+      "timestamp": "2026-02-01T12:00:00"
+    },
+    {
+      "date": "2026-02-02",
+      "habit": "Imported daily points",
+      "points": 1626,
+      "timestamp": "2026-02-02T12:00:00"
+    },
+    {
+      "date": "2026-02-03",
+      "habit": "Imported daily points",
+      "points": -710,
+      "timestamp": "2026-02-03T12:00:00"
+    },
+    {
+      "date": "2026-02-04",
+      "habit": "Imported daily points",
+      "points": 891,
+      "timestamp": "2026-02-04T12:00:00"
+    },
+    {
+      "date": "2026-02-05",
+      "habit": "Imported daily points",
+      "points": -606,
+      "timestamp": "2026-02-05T12:00:00"
+    },
+    {
+      "date": "2026-02-06",
+      "habit": "Imported daily points",
+      "points": 1668,
+      "timestamp": "2026-02-06T12:00:00"
+    },
+    {
+      "date": "2026-02-07",
+      "habit": "Imported daily points",
+      "points": -74,
+      "timestamp": "2026-02-07T12:00:00"
+    },
+    {
+      "date": "2026-02-08",
+      "habit": "Imported daily points",
+      "points": -316,
+      "timestamp": "2026-02-08T12:00:00"
+    },
+    {
+      "date": "2026-02-09",
+      "habit": "Imported daily points",
+      "points": -222,
+      "timestamp": "2026-02-09T12:00:00"
+    },
+    {
+      "date": "2026-02-10",
+      "habit": "Imported daily points",
+      "points": 601,
+      "timestamp": "2026-02-10T12:00:00"
+    },
+    {
+      "date": "2026-02-11",
+      "habit": "Imported daily points",
+      "points": 128,
+      "timestamp": "2026-02-11T12:00:00"
+    },
+    {
+      "date": "2026-02-12",
+      "habit": "Imported daily points",
+      "points": 853,
+      "timestamp": "2026-02-12T12:00:00"
+    },
+    {
+      "date": "2026-02-13",
+      "habit": "Imported daily points",
+      "points": -277,
+      "timestamp": "2026-02-13T12:00:00"
+    },
+    {
+      "date": "2026-02-14",
+      "habit": "Imported daily points",
+      "points": 880,
+      "timestamp": "2026-02-14T12:00:00"
+    },
+    {
+      "date": "2026-02-15",
+      "habit": "Imported daily points",
+      "points": 156,
+      "timestamp": "2026-02-15T12:00:00"
+    },
+    {
+      "date": "2026-02-16",
+      "habit": "Imported daily points",
+      "points": 1546,
+      "timestamp": "2026-02-16T12:00:00"
+    },
+    {
+      "date": "2026-02-17",
+      "habit": "Imported daily points",
+      "points": -596,
+      "timestamp": "2026-02-17T12:00:00"
+    },
+    {
+      "date": "2026-02-18",
+      "habit": "Imported daily points",
+      "points": 972,
+      "timestamp": "2026-02-18T12:00:00"
+    },
+    {
+      "date": "2026-02-19",
+      "habit": "Imported daily points",
+      "points": -96,
+      "timestamp": "2026-02-19T12:00:00"
+    },
+    {
+      "date": "2026-02-20",
+      "habit": "Imported daily points",
+      "points": -449,
+      "timestamp": "2026-02-20T12:00:00"
+    },
+    {
+      "date": "2026-02-21",
+      "habit": "Imported daily points",
+      "points": -96,
+      "timestamp": "2026-02-21T12:00:00"
+    },
+    {
+      "date": "2026-02-22",
+      "habit": "Imported daily points",
+      "points": 823,
+      "timestamp": "2026-02-22T12:00:00"
+    },
+    {
+      "date": "2026-02-23",
+      "habit": "Imported daily points",
+      "points": 628,
+      "timestamp": "2026-02-23T12:00:00"
+    },
+    {
+      "date": "2026-02-24",
+      "habit": "Imported daily points",
+      "points": 362,
+      "timestamp": "2026-02-24T12:00:00"
+    },
+    {
+      "date": "2026-02-25",
+      "habit": "Imported daily points",
+      "points": -748,
+      "timestamp": "2026-02-25T12:00:00"
+    },
+    {
+      "date": "2026-02-26",
+      "habit": "Imported daily points",
+      "points": -158,
+      "timestamp": "2026-02-26T12:00:00"
+    },
+    {
+      "date": "2026-02-27",
+      "habit": "Imported daily points",
+      "points": 1445,
+      "timestamp": "2026-02-27T12:00:00"
+    },
+    {
+      "date": "2026-02-28",
+      "habit": "Imported daily points",
+      "points": 1004,
+      "timestamp": "2026-02-28T12:00:00"
+    },
+    {
+      "date": "2026-03-01",
+      "habit": "Imported daily points",
+      "points": 1400,
+      "timestamp": "2026-03-01T12:00:00"
+    },
+    {
+      "date": "2026-03-02",
+      "habit": "Imported daily points",
+      "points": 429,
+      "timestamp": "2026-03-02T12:00:00"
+    },
+    {
+      "date": "2026-03-03",
+      "habit": "Imported daily points",
+      "points": 40,
+      "timestamp": "2026-03-03T12:00:00"
+    },
+    {
+      "date": "2026-03-04",
+      "habit": "Imported daily points",
+      "points": -459,
+      "timestamp": "2026-03-04T12:00:00"
+    },
+    {
+      "date": "2026-03-05",
+      "habit": "Imported daily points",
+      "points": 545,
+      "timestamp": "2026-03-05T12:00:00"
+    },
+    {
+      "date": "2026-03-06",
+      "habit": "Imported daily points",
+      "points": 243,
+      "timestamp": "2026-03-06T12:00:00"
+    },
+    {
+      "date": "2026-03-07",
+      "habit": "Imported daily points",
+      "points": 788,
+      "timestamp": "2026-03-07T12:00:00"
+    },
+    {
+      "date": "2026-03-08",
+      "habit": "Imported daily points",
+      "points": 278,
+      "timestamp": "2026-03-08T12:00:00"
+    },
+    {
+      "date": "2026-03-09",
+      "habit": "Imported daily points",
+      "points": 1432,
+      "timestamp": "2026-03-09T12:00:00"
+    },
+    {
+      "date": "2026-03-10",
+      "habit": "Imported daily points",
+      "points": 631,
+      "timestamp": "2026-03-10T12:00:00"
+    },
+    {
+      "date": "2026-03-11",
+      "habit": "Imported daily points",
+      "points": -536,
+      "timestamp": "2026-03-11T12:00:00"
+    },
+    {
+      "date": "2026-03-12",
+      "habit": "Imported daily points",
+      "points": 1169,
+      "timestamp": "2026-03-12T12:00:00"
+    },
+    {
+      "date": "2026-03-13",
+      "habit": "Imported daily points",
+      "points": 749,
+      "timestamp": "2026-03-13T12:00:00"
+    },
+    {
+      "date": "2026-03-14",
+      "habit": "Imported daily points",
+      "points": -712,
+      "timestamp": "2026-03-14T12:00:00"
+    },
+    {
+      "date": "2026-03-15",
+      "habit": "Imported daily points",
+      "points": 1167,
+      "timestamp": "2026-03-15T12:00:00"
+    },
+    {
+      "date": "2026-03-16",
+      "habit": "Imported daily points",
+      "points": 949,
+      "timestamp": "2026-03-16T12:00:00"
+    },
+    {
+      "date": "2026-03-17",
+      "habit": "Imported daily points",
+      "points": 1044,
+      "timestamp": "2026-03-17T12:00:00"
+    },
+    {
+      "date": "2026-03-18",
+      "habit": "Imported daily points",
+      "points": 850,
+      "timestamp": "2026-03-18T12:00:00"
+    },
+    {
+      "date": "2026-03-19",
+      "habit": "Imported daily points",
+      "points": 1618,
+      "timestamp": "2026-03-19T12:00:00"
+    },
+    {
+      "date": "2026-03-20",
+      "habit": "Imported daily points",
+      "points": 259,
+      "timestamp": "2026-03-20T12:00:00"
+    },
+    {
+      "date": "2026-03-21",
+      "habit": "Imported daily points",
+      "points": -335,
+      "timestamp": "2026-03-21T12:00:00"
+    },
+    {
+      "date": "2026-03-22",
+      "habit": "Imported daily points",
+      "points": 57,
+      "timestamp": "2026-03-22T12:00:00"
+    },
+    {
+      "date": "2026-03-23",
+      "habit": "Imported daily points",
+      "points": 8,
+      "timestamp": "2026-03-23T12:00:00"
+    },
+    {
+      "date": "2026-03-24",
+      "habit": "Imported daily points",
+      "points": 1214,
+      "timestamp": "2026-03-24T12:00:00"
+    },
+    {
+      "date": "2026-03-25",
+      "habit": "Imported daily points",
+      "points": 1070,
+      "timestamp": "2026-03-25T12:00:00"
+    },
+    {
+      "date": "2026-03-26",
+      "habit": "Imported daily points",
+      "points": -760,
+      "timestamp": "2026-03-26T12:00:00"
+    },
+    {
+      "date": "2026-03-27",
+      "habit": "Imported daily points",
+      "points": 1622,
+      "timestamp": "2026-03-27T12:00:00"
+    },
+    {
+      "date": "2026-03-28",
+      "habit": "Imported daily points",
+      "points": 319,
+      "timestamp": "2026-03-28T12:00:00"
+    },
+    {
+      "date": "2026-03-29",
+      "habit": "Imported daily points",
+      "points": 937,
+      "timestamp": "2026-03-29T12:00:00"
+    },
+    {
+      "date": "2026-03-30",
+      "habit": "Imported daily points",
+      "points": 1579,
+      "timestamp": "2026-03-30T12:00:00"
+    },
+    {
+      "date": "2026-03-31",
+      "habit": "Imported daily points",
+      "points": -298,
+      "timestamp": "2026-03-31T12:00:00"
+    },
+    {
+      "date": "2026-04-01",
+      "habit": "Imported daily points",
+      "points": 1070,
+      "timestamp": "2026-04-01T12:00:00"
+    },
+    {
+      "date": "2026-04-02",
+      "habit": "Imported daily points",
+      "points": 1222,
+      "timestamp": "2026-04-02T12:00:00"
+    },
+    {
+      "date": "2026-04-03",
+      "habit": "Imported daily points",
+      "points": 1052,
+      "timestamp": "2026-04-03T12:00:00"
+    },
+    {
+      "date": "2026-04-04",
+      "habit": "Imported daily points",
+      "points": 431,
+      "timestamp": "2026-04-04T12:00:00"
+    },
+    {
+      "date": "2026-04-05",
+      "habit": "Imported daily points",
+      "points": -409,
+      "timestamp": "2026-04-05T12:00:00"
+    },
+    {
+      "date": "2026-04-06",
+      "habit": "Imported daily points",
+      "points": 347,
+      "timestamp": "2026-04-06T12:00:00"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Read 30 min",
+      "points": 20,
+      "timestamp": "2026-04-06T18:42:14.672782"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Read 30 min",
+      "points": 20,
+      "timestamp": "2026-04-06T18:42:15.025583"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Read 30 min",
+      "points": 20,
+      "timestamp": "2026-04-06T18:42:15.517789"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Read 30 min",
+      "points": 20,
+      "timestamp": "2026-04-06T18:42:15.949742"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T18:44:46.153375"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T18:44:46.675191"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T18:44:47.127578"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T18:44:47.479374"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T18:44:47.801153"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T18:44:48.053399"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T18:44:48.385589"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T18:44:48.717834"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T18:44:48.998544"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T18:44:49.242262"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T18:44:49.523786"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T18:44:49.785022"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T18:54:09.307787"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T18:54:10.329402"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T18:57:41.953084"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T18:57:42.525093"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T18:57:42.947579"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T18:57:43.130729"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T18:57:43.293183"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T18:57:43.444353"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:07:23.488848"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:07:24.330505"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:07:25.472682"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:07:35.857650"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:07:36.479147"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:07:37.002279"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:07:37.433875"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:07:37.735999"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:07:37.967887"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:07:38.159202"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:07:38.662199"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:07:38.864165"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:07:39.425998"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:07:39.618416"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:07:39.780656"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:07:39.983363"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:07:40.154406"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:07:40.337330"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:07:40.538694"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:07:40.750915"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:07:41.092659"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:07:41.285068"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:07:41.486884"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:07:41.658323"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:07:41.850707"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:07:42.042768"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:07:42.224522"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:07:42.547313"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:07:42.719728"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:20:35.437404"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Read 30 min",
+      "points": 20,
+      "timestamp": "2026-04-06T19:20:36.540067"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Read 30 min",
+      "points": 20,
+      "timestamp": "2026-04-06T19:20:37.323006"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Read 30 min",
+      "points": 20,
+      "timestamp": "2026-04-06T19:20:40.206714"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:20:40.899862"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:20:54.567351"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:20:54.990054"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:20:55.301923"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:20:55.564080"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:20:55.976612"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:20:56.238533"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:20:56.589977"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:20:56.882100"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:20:57.143795"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:20:57.396188"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:20:57.877259"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:20:58.060251"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:20:58.231960"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:20:58.436276"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:20:58.610680"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:20:58.793293"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:20:58.965053"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:20:59.128562"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:20:59.280821"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:20:59.453620"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:20:59.645185"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:20:59.816954"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:20:59.978711"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:00.161329"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:00.324538"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:06.594682"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:06.837930"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:07.075086"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:07.317706"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:07.589242"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:07.820732"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:08.051367"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:08.287971"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:08.526460"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:08.764277"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:08.990555"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:09.216665"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:09.506548"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:09.768579"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:10.006137"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:10.236690"
+    },
+    {
+      "date": "2025-12-29",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:10.471611"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:17.933879"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:23.628719"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:23.852040"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:24.154913"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:24.375797"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:24.739228"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:24.996176"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:26.404027"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:26.638623"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:26.872550"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:27.102047"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:27.338896"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:27.570274"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:27.802131"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:28.100441"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:28.422700"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:28.689821"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:28.947592"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:21:29.231066"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:22:02.640899"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Exercise",
+      "points": 30,
+      "timestamp": "2026-04-06T19:22:03.253171"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Screen > 4 hrs",
+      "points": -100,
+      "timestamp": "2026-04-06T19:33:34.007494"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Junk food",
+      "points": -150,
+      "timestamp": "2026-04-06T19:33:40.198378"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Junk food",
+      "points": -150,
+      "timestamp": "2026-04-06T19:33:40.590760"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Junk food",
+      "points": -150,
+      "timestamp": "2026-04-06T19:33:41.033045"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Junk food",
+      "points": -150,
+      "timestamp": "2026-04-06T19:33:41.365140"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Junk food",
+      "points": -150,
+      "timestamp": "2026-04-06T19:33:41.606807"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Junk food",
+      "points": -150,
+      "timestamp": "2026-04-06T19:33:41.892107"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Junk food",
+      "points": -150,
+      "timestamp": "2026-04-06T19:33:42.137759"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Junk food",
+      "points": -150,
+      "timestamp": "2026-04-06T19:33:42.379356"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Junk food",
+      "points": -150,
+      "timestamp": "2026-04-06T19:33:42.616293"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Junk food",
+      "points": -150,
+      "timestamp": "2026-04-06T19:33:42.855564"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Junk food",
+      "points": -150,
+      "timestamp": "2026-04-06T19:33:43.099254"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Junk food",
+      "points": -150,
+      "timestamp": "2026-04-06T19:33:43.344831"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Junk food",
+      "points": -150,
+      "timestamp": "2026-04-06T19:33:43.586821"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Junk food",
+      "points": -150,
+      "timestamp": "2026-04-06T19:33:43.900153"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Junk food",
+      "points": -150,
+      "timestamp": "2026-04-06T19:33:44.175628"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Junk food",
+      "points": -150,
+      "timestamp": "2026-04-06T19:33:44.443651"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Junk food",
+      "points": -150,
+      "timestamp": "2026-04-06T19:33:44.705652"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Junk food",
+      "points": -150,
+      "timestamp": "2026-04-06T19:33:44.943747"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Junk food",
+      "points": -150,
+      "timestamp": "2026-04-06T19:33:45.186001"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Junk food",
+      "points": -150,
+      "timestamp": "2026-04-06T19:33:45.421992"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Junk food",
+      "points": -150,
+      "timestamp": "2026-04-06T19:33:45.661641"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Junk food",
+      "points": -150,
+      "timestamp": "2026-04-06T19:33:45.941355"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Junk food",
+      "points": -150,
+      "timestamp": "2026-04-06T19:33:46.219903"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Junk food",
+      "points": -150,
+      "timestamp": "2026-04-06T19:33:46.461158"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Junk food",
+      "points": -150,
+      "timestamp": "2026-04-06T19:33:46.701214"
+    },
+    {
+      "date": "2025-12-30",
+      "habit": "Junk food",
+      "points": -150,
+      "timestamp": "2026-04-06T19:33:46.940292"
+    }
+  ],
+  "manual_close": {},
+  "current_open_day": "2025-12-30",
+  "auto_close_enabled": false,
+  "auto_close_time": "21:00",
+  "auto_last_close_date": null
+}

@@ -15,6 +15,7 @@ import json
 import os
 import datetime
 import csv
+import random
 import tkinter as tk
 from tkinter import ttk, messagebox, filedialog
 import matplotlib.pyplot as plt
@@ -89,6 +90,12 @@ def ensure_session_settings(data):
         data["streak_kind"] = None
     if "streak_count" not in data:
         data["streak_count"] = 0
+    if "positive_streak_carry_active" not in data:
+        data["positive_streak_carry_active"] = False
+    if "positive_streak_carry_multiplier" not in data:
+        data["positive_streak_carry_multiplier"] = 1.0
+    if "positive_streak_carry_count" not in data:
+        data["positive_streak_carry_count"] = 0
     if "multiplier_settings" not in data or not isinstance(data["multiplier_settings"], dict):
         data["multiplier_settings"] = {}
     ms = data["multiplier_settings"]
@@ -102,6 +109,34 @@ def ensure_session_settings(data):
         ms["positive_cap"] = 100.0
     if "negative_cap" not in ms:
         ms["negative_cap"] = 200.0
+
+def ensure_tasks(data):
+    if "tasks" not in data or not isinstance(data["tasks"], list):
+        data["tasks"] = []
+    for t in data["tasks"]:
+        t.setdefault("id", datetime.datetime.now().isoformat())
+        t.setdefault("name", "Unnamed task")
+        t.setdefault("points", 0)
+        t.setdefault("deadline", None)
+        t.setdefault("status", "open")  # open | completed | expired
+        t.setdefault("created", datetime.datetime.now().isoformat())
+
+def ensure_habit_metadata(data):
+    habits = data.get("habits", [])
+    for h in habits:
+        if "category" not in h or not str(h.get("category", "")).strip():
+            h["category"] = "General"
+        if "execution_count" not in h:
+            h["execution_count"] = 0
+
+def recalc_habit_execution_counts(data):
+    counts = defaultdict(int)
+    for entry in data.get("log", []):
+        name = str(entry.get("habit", "")).strip()
+        if name:
+            counts[name] += 1
+    for h in data.get("habits", []):
+        h["execution_count"] = counts.get(str(h.get("name", "")).strip(), 0)
 
 def parse_hhmm(raw):
     text = str(raw).strip()
@@ -611,6 +646,191 @@ class SettingsDialog(tk.Toplevel):
         messagebox.showerror("Import failed", "Config JSON must be an object.", parent=self)
 
 
+class CustomHabitDialog(tk.Toplevel):
+    def __init__(self, parent, app):
+        super().__init__(parent)
+        self.app = app
+        self.title("Create Custom Habit")
+        self.configure(bg="#0f0f0f")
+        self.resizable(False, False)
+        self.grab_set()
+        self.name_var = tk.StringVar()
+        self.points_var = tk.StringVar()
+        self.category_var = tk.StringVar(value="General")
+        self.live_tracking_var = tk.BooleanVar(value=False)
+        self.live_duration_var = tk.StringVar(value="30")
+        self.live_interval_var = tk.StringVar(value="60")
+        self.live_amount_var = tk.StringVar(value="1.0")
+        self.live_variance_var = tk.StringVar(value="0.15")
+        self._build()
+        self._center()
+
+    def _center(self):
+        self.update_idletasks()
+        pw = self.master.winfo_rootx() + self.master.winfo_width() // 2
+        ph = self.master.winfo_rooty() + self.master.winfo_height() // 2
+        w, h = self.winfo_width(), self.winfo_height()
+        self.geometry(f"+{pw - w//2}+{ph - h//2}")
+
+    def _build(self):
+        wrap = tk.Frame(self, bg="#0f0f0f")
+        wrap.pack(fill=tk.BOTH, expand=True, padx=12, pady=12)
+        tk.Label(wrap, text="Habit name",
+                 bg="#0f0f0f", fg="#d6deea", font=("Segoe UI", 9)).pack(anchor="w")
+        tk.Entry(wrap, textvariable=self.name_var,
+                 bg="#1a263a", fg="#e8e8e8", insertbackground="#e8e8e8",
+                 relief="flat", width=34).pack(anchor="w", ipady=3, pady=(2, 8))
+        tk.Label(wrap, text="Points (e.g. 20 or -10)",
+                 bg="#0f0f0f", fg="#d6deea", font=("Segoe UI", 9)).pack(anchor="w")
+        tk.Entry(wrap, textvariable=self.points_var,
+                 bg="#1a263a", fg="#e8e8e8", insertbackground="#e8e8e8",
+                 relief="flat", width=20).pack(anchor="w", ipady=3, pady=(2, 10))
+        tk.Label(wrap, text="Category [default General]",
+                 bg="#0f0f0f", fg="#d6deea", font=("Segoe UI", 9)).pack(anchor="w")
+        tk.Entry(wrap, textvariable=self.category_var,
+                 bg="#1a263a", fg="#e8e8e8", insertbackground="#e8e8e8",
+                 relief="flat", width=20).pack(anchor="w", ipady=3, pady=(2, 10))
+        tk.Checkbutton(
+            wrap, text="Enable live tracking",
+            variable=self.live_tracking_var,
+            bg="#0f0f0f", fg="#d6deea", activebackground="#0f0f0f",
+            activeforeground="#ffffff", selectcolor="#1a263a",
+            font=("Segoe UI", 9)
+        ).pack(anchor="w", pady=(0, 6))
+        tk.Label(wrap, text="Approx time (minutes) [default 30]",
+                 bg="#0f0f0f", fg="#d6deea", font=("Segoe UI", 9)).pack(anchor="w")
+        tk.Entry(wrap, textvariable=self.live_duration_var,
+                 bg="#1a263a", fg="#e8e8e8", insertbackground="#e8e8e8",
+                 relief="flat", width=20).pack(anchor="w", ipady=3, pady=(2, 6))
+        tk.Label(wrap, text="Interval (seconds) [default 60]",
+                 bg="#0f0f0f", fg="#d6deea", font=("Segoe UI", 9)).pack(anchor="w")
+        tk.Entry(wrap, textvariable=self.live_interval_var,
+                 bg="#1a263a", fg="#e8e8e8", insertbackground="#e8e8e8",
+                 relief="flat", width=20).pack(anchor="w", ipady=3, pady=(2, 6))
+        tk.Label(wrap, text="Amount [default 1.0]",
+                 bg="#0f0f0f", fg="#d6deea", font=("Segoe UI", 9)).pack(anchor="w")
+        tk.Entry(wrap, textvariable=self.live_amount_var,
+                 bg="#1a263a", fg="#e8e8e8", insertbackground="#e8e8e8",
+                 relief="flat", width=20).pack(anchor="w", ipady=3, pady=(2, 6))
+        tk.Label(wrap, text="Variance 0..1 [default 0.15]",
+                 bg="#0f0f0f", fg="#d6deea", font=("Segoe UI", 9)).pack(anchor="w")
+        tk.Entry(wrap, textvariable=self.live_variance_var,
+                 bg="#1a263a", fg="#e8e8e8", insertbackground="#e8e8e8",
+                 relief="flat", width=20).pack(anchor="w", ipady=3, pady=(2, 10))
+        tk.Button(wrap, text="Create & Log",
+                  bg="#1a263a", fg="#d6e6ff", activebackground="#243653",
+                  relief="flat",
+                  command=self._submit).pack(anchor="e")
+
+    def _submit(self):
+        if self.app._add_custom_habit(
+            self.name_var.get(),
+            self.points_var.get(),
+            category=self.category_var.get().strip(),
+            live_tracking_enabled=bool(self.live_tracking_var.get()),
+            live_duration_minutes=self.live_duration_var.get().strip(),
+            live_interval_seconds=self.live_interval_var.get().strip(),
+            live_amount=self.live_amount_var.get().strip(),
+            live_variance=self.live_variance_var.get().strip(),
+        ):
+            self.destroy()
+
+
+class HabitLibraryDialog(tk.Toplevel):
+    def __init__(self, parent, app):
+        super().__init__(parent)
+        self.app = app
+        self.title("Habit Library")
+        self.configure(bg="#0f0f0f")
+        self.resizable(False, False)
+        self.grab_set()
+        self._build()
+        self._center()
+
+    def _center(self):
+        self.update_idletasks()
+        pw = self.master.winfo_rootx() + self.master.winfo_width() // 2
+        ph = self.master.winfo_rooty() + self.master.winfo_height() // 2
+        w, h = self.winfo_width(), self.winfo_height()
+        self.geometry(f"+{pw - w//2}+{ph - h//2}")
+
+    def _build(self):
+        tk.Label(self, text="Saved habits",
+                 bg="#0f0f0f", fg="#d6deea", font=("Segoe UI", 10, "bold")).pack(anchor="w", padx=12, pady=(10, 4))
+
+        self.listbox = tk.Listbox(
+            self, bg="#111122", fg="#d6deea",
+            selectbackground="#252545", selectforeground="#ffffff",
+            font=("Consolas", 9), width=72, height=14, relief="flat"
+        )
+        self.listbox.pack(padx=12, pady=(0, 8))
+        self._populate()
+
+        row = tk.Frame(self, bg="#0f0f0f")
+        row.pack(fill=tk.X, padx=12, pady=(0, 12))
+        tk.Button(row, text="Export habits",
+                  bg="#1a263a", fg="#8dd7ff", activebackground="#243653",
+                  relief="flat", command=self._export_habits).pack(side=tk.LEFT)
+        tk.Button(row, text="Import habits",
+                  bg="#1a263a", fg="#ffd49a", activebackground="#243653",
+                  relief="flat", command=self._import_habits).pack(side=tk.LEFT, padx=(8, 0))
+        tk.Button(row, text="Close",
+                  bg="#1a263a", fg="#d6e6ff", activebackground="#243653",
+                  relief="flat", command=self.destroy).pack(side=tk.RIGHT)
+
+    def _populate(self):
+        self.listbox.delete(0, tk.END)
+        for h in self.app.data.get("habits", []):
+            name = h.get("name", "")
+            points = h.get("points", 0)
+            category = h.get("category", "General")
+            executed = h.get("execution_count", 0)
+            self.listbox.insert(
+                tk.END, f"{name:<24} pts={points:>5} | category={category:<12} | executed={executed}"
+            )
+
+    def _export_habits(self):
+        path = filedialog.asksaveasfilename(
+            title="Export habits set",
+            defaultextension=".json",
+            initialfile="habit_set.json",
+            filetypes=[("JSON files", "*.json"), ("All files", "*.*")],
+            parent=self
+        )
+        if not path:
+            return
+        payload = {"habits": self.app.data.get("habits", [])}
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(payload, f, indent=2)
+        messagebox.showinfo("Export complete", f"Habits exported to:\n{path}", parent=self)
+
+    def _import_habits(self):
+        path = filedialog.askopenfilename(
+            title="Import habits set",
+            filetypes=[("JSON files", "*.json"), ("All files", "*.*")],
+            parent=self
+        )
+        if not path:
+            return
+        try:
+            with open(path, "r", encoding="utf-8") as f:
+                payload = json.load(f)
+        except Exception as exc:
+            messagebox.showerror("Import failed", f"Could not read file:\n{exc}", parent=self)
+            return
+        habits = payload.get("habits") if isinstance(payload, dict) else None
+        if not isinstance(habits, list):
+            messagebox.showerror("Import failed", "JSON must contain a 'habits' list.", parent=self)
+            return
+        self.app.data["habits"] = habits
+        ensure_habit_metadata(self.app.data)
+        recalc_habit_execution_counts(self.app.data)
+        save_data(self.app.data)
+        self.app._build_habit_buttons()
+        self._populate()
+        messagebox.showinfo("Import complete", "Habits imported successfully.", parent=self)
+
+
 # ──────────────────────────────────────────────────────────────────────────────
 # Main application
 # ──────────────────────────────────────────────────────────────────────────────
@@ -626,6 +846,9 @@ class HabitTrackerApp:
         self.data  = load_data()
         ensure_manual_close(self.data)
         ensure_session_settings(self.data)
+        ensure_tasks(self.data)
+        ensure_habit_metadata(self.data)
+        recalc_habit_execution_counts(self.data)
         self.today = datetime.date.today().isoformat()
 
         self._candle_dates = []   # populated by _refresh_chart
@@ -640,6 +863,7 @@ class HabitTrackerApp:
         self._build_ui()
         self._refresh_chart()
         self._start_ui_animations()
+        self._check_task_deadlines()
 
     # ── UI ────────────────────────────────────────────────────────────────── #
 
@@ -758,14 +982,40 @@ class HabitTrackerApp:
         self._make_broker_button(csv_box, "Export CSV", self._export_csv, fg="#8dd7ff").pack(side=tk.LEFT)
         self._make_broker_button(csv_box, "Import CSV", self._import_csv, fg="#ffd49a").pack(side=tk.LEFT, padx=(6, 0))
         self._make_broker_button(csv_box, "Settings", self._open_settings_dialog).pack(side=tk.LEFT, padx=(6, 0))
+        self._make_broker_button(csv_box, "Habits", self._open_habit_library_dialog, fg="#9ad9ff").pack(side=tk.LEFT, padx=(6, 0))
+
+        custom_habit_box = tk.Frame(left, bg="#0f0f0f")
+        custom_habit_box.pack(fill=tk.X, pady=(0, 8))
+        self._make_broker_button(
+            custom_habit_box, "Custom habit", self._open_custom_habit_dialog, fg="#b4f0ff"
+        ).pack(side=tk.LEFT)
 
         ttk.Separator(left, orient="horizontal").pack(fill=tk.X, pady=6)
-        ttk.Label(left, text="LOG A HABIT",
-                  font=("Courier New", 11, "bold"),
-                  background="#0f0f0f", foreground="#ffffff").pack(pady=(0, 6))
+        log_pane = tk.PanedWindow(
+            left, orient=tk.VERTICAL, bg="#0f0f0f",
+            sashwidth=8, sashrelief=tk.RAISED, bd=0
+        )
+        log_pane.pack(fill=tk.BOTH, expand=True)
 
-        habit_list_frame = tk.Frame(left, bg="#0f0f0f")
-        habit_list_frame.pack(fill=tk.X)
+        top_panel = tk.Frame(log_pane, bg="#0f0f0f")
+
+        style.configure("Dark.TNotebook", background="#0f0f0f", borderwidth=0)
+        style.configure("Dark.TNotebook.Tab",
+                         background="#1a1a2e", foreground="#aaaaaa",
+                         font=("Courier New", 9, "bold"), padding=[10, 4])
+        style.map("Dark.TNotebook.Tab",
+                   background=[("selected", "#2b4a70")],
+                   foreground=[("selected", "#ffffff")])
+
+        self.left_notebook = ttk.Notebook(top_panel, style="Dark.TNotebook")
+        self.left_notebook.pack(fill=tk.BOTH, expand=True)
+
+        # ── Tab 1: Log a Habit ──
+        habit_tab = tk.Frame(self.left_notebook, bg="#0f0f0f")
+        self.left_notebook.add(habit_tab, text="LOG A HABIT")
+
+        habit_list_frame = tk.Frame(habit_tab, bg="#0f0f0f")
+        habit_list_frame.pack(fill=tk.BOTH, expand=True)
 
         habit_scrollbar = tk.Scrollbar(
             habit_list_frame, bg="#1a1a2e", troughcolor="#0f0f0f"
@@ -773,10 +1023,10 @@ class HabitTrackerApp:
         habit_scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
 
         self.habit_canvas = tk.Canvas(
-            habit_list_frame, bg="#0f0f0f", highlightthickness=0, height=200,
+            habit_list_frame, bg="#0f0f0f", highlightthickness=0,
             yscrollcommand=habit_scrollbar.set
         )
-        self.habit_canvas.pack(side=tk.LEFT, fill=tk.X, expand=True)
+        self.habit_canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
         self.habit_frame = ttk.Frame(self.habit_canvas)
         self.habit_canvas.create_window((0, 0), window=self.habit_frame, anchor="nw")
         habit_scrollbar.config(command=self.habit_canvas.yview)
@@ -785,36 +1035,18 @@ class HabitTrackerApp:
                 scrollregion=self.habit_canvas.bbox("all")))
         self._build_habit_buttons()
 
-        ttk.Separator(left, orient="horizontal").pack(fill=tk.X, pady=8)
-        ttk.Label(left, text="ADD CUSTOM HABIT",
-                  font=("Courier New", 10, "bold"),
-                  background="#0f0f0f", foreground="#ffffff").pack(pady=(0, 4))
+        # ── Tab 2: Log a Task ──
+        task_tab = tk.Frame(self.left_notebook, bg="#0f0f0f")
+        self.left_notebook.add(task_tab, text="LOG A TASK")
+        self._build_task_tab(task_tab)
 
-        self.custom_name = tk.StringVar()
-        self.custom_pts  = tk.StringVar()
-
-        name_e = tk.Entry(left, textvariable=self.custom_name,
-                          bg="#1a1a2e", fg="#e8e8e8", insertbackground="#e8e8e8",
-                          font=("Courier New", 10), relief="flat",
-                          highlightthickness=1, highlightcolor="#333366")
-        name_e.insert(0, "habit name")
-        name_e.pack(fill=tk.X, pady=2, ipady=5)
-
-        pts_e = tk.Entry(left, textvariable=self.custom_pts,
-                         bg="#1a1a2e", fg="#e8e8e8", insertbackground="#e8e8e8",
-                         font=("Courier New", 10), relief="flat",
-                         highlightthickness=1, highlightcolor="#333366")
-        pts_e.insert(0, "points (e.g. -10 or +20)")
-        pts_e.pack(fill=tk.X, pady=2, ipady=5)
-
-        ttk.Button(left, text="Add & Log Habit →",
-                   command=self._add_custom_habit).pack(fill=tk.X, pady=(6, 0))
-
-        ttk.Separator(left, orient="horizontal").pack(fill=tk.X, pady=8)
-        ttk.Label(left, text="OPEN DAY LOG",
+        # ── Bottom: Open Day Log ──
+        bottom_panel = tk.Frame(log_pane, bg="#0f0f0f")
+        ttk.Separator(bottom_panel, orient="horizontal").pack(fill=tk.X, pady=8)
+        ttk.Label(bottom_panel, text="OPEN DAY LOG",
                   font=("Courier New", 10, "bold"),
                   foreground="#aaaaaa", background="#0f0f0f").pack(pady=(0, 4))
-        log_frame = tk.Frame(left, bg="#0f0f0f")
+        log_frame = tk.Frame(bottom_panel, bg="#0f0f0f")
         log_frame.pack(fill=tk.BOTH, expand=True)
 
         log_scrollbar = tk.Scrollbar(log_frame, bg="#1a1a2e", troughcolor="#0f0f0f")
@@ -826,6 +1058,9 @@ class HabitTrackerApp:
                                 yscrollcommand=log_scrollbar.set)
         self.log_text.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
         log_scrollbar.config(command=self.log_text.yview)
+
+        log_pane.add(top_panel, minsize=220)
+        log_pane.add(bottom_panel, minsize=120)
 
         # Right panel
         right = ttk.Frame(self.root)
@@ -885,21 +1120,315 @@ class HabitTrackerApp:
     def _build_habit_buttons(self):
         for w in self.habit_frame.winfo_children():
             w.destroy()
-        for habit in self.data["habits"]:
-            pts   = habit["points"]
-            color = "#00cc66" if pts >= 0 else "#cc3333"
-            sign  = "+" if pts > 0 else ""
-            label = f"{habit.get('emoji','●')}  {habit['name']}  ({sign}{pts})"
-            btn = tk.Button(
-                self.habit_frame, text=label,
-                bg="#1a263a", fg=color, activebackground="#243653",
-                activeforeground=color, font=("Segoe UI", 9),
-                relief="flat", anchor="w", padx=8,
-                command=lambda h=habit: self._log_habit(h)
+        for col in range(3):
+            self.habit_frame.grid_columnconfigure(col, weight=1, uniform="habit_col")
+
+        for idx, habit in enumerate(self.data["habits"]):
+            pts = habit["points"]
+            is_positive = pts >= 0
+            base_bg = "#153429" if is_positive else "#3a1d25"
+            hover_bg = "#1f4b3a" if is_positive else "#5a2b36"
+            fg_eval = "#7ff0c5" if is_positive else "#ff9da9"
+            sign = "+" if pts > 0 else ""
+
+            row = idx // 3
+            col = idx % 3
+
+            card = tk.Frame(
+                self.habit_frame,
+                bg=base_bg,
+                width=86,
+                height=86,
+                relief="flat",
+                highlightthickness=1,
+                highlightbackground="#2a3a4f",
+                cursor="hand2",
             )
-            btn.bind("<Enter>", lambda _e, b=btn: b.config(bg="#243653"))
-            btn.bind("<Leave>", lambda _e, b=btn: b.config(bg="#1a263a"))
-            btn.pack(fill=tk.X, pady=2, ipady=4)
+            card.grid(row=row, column=col, padx=4, pady=4, sticky="nsew")
+            card.grid_propagate(False)
+
+            emoji_lbl = tk.Label(
+                card, text=habit.get("emoji", "●"),
+                bg=base_bg, fg=fg_eval, font=("Segoe UI Emoji", 16, "bold")
+            )
+            emoji_lbl.pack(pady=(8, 2))
+
+            name_lbl = tk.Label(
+                card, text=f"{habit['name']}\n{habit.get('category', 'General')}", bg=base_bg, fg="#e7edf7",
+                font=("Segoe UI", 8, "bold"), wraplength=76, justify="center"
+            )
+            name_lbl.pack(pady=(0, 2))
+
+            pts_lbl = tk.Label(
+                card, text=f"{sign}{pts}", bg=base_bg, fg=fg_eval,
+                font=("Consolas", 10, "bold")
+            )
+            pts_lbl.pack()
+
+            widgets = [card, emoji_lbl, name_lbl, pts_lbl]
+
+            def _set_bg(color, ws):
+                for w in ws:
+                    w.config(bg=color)
+
+            card.bind("<Enter>", lambda _e, ws=widgets, c=hover_bg: _set_bg(c, ws))
+            card.bind("<Leave>", lambda _e, ws=widgets, c=base_bg: _set_bg(c, ws))
+            card.bind("<Button-1>", lambda _e, h=habit: self._log_habit(h))
+            emoji_lbl.bind("<Button-1>", lambda _e, h=habit: self._log_habit(h))
+            name_lbl.bind("<Button-1>", lambda _e, h=habit: self._log_habit(h))
+            pts_lbl.bind("<Button-1>", lambda _e, h=habit: self._log_habit(h))
+
+    # ── Task tab ────────────────────────────────────────────────────────── #
+
+    def _build_task_tab(self, parent):
+        form = tk.Frame(parent, bg="#0f0f0f")
+        form.pack(fill=tk.X, padx=6, pady=(8, 4))
+
+        tk.Label(form, text="Task name", bg="#0f0f0f", fg="#aaaaaa",
+                 font=("Courier New", 8)).grid(row=0, column=0, sticky="w")
+        self._task_name_var = tk.StringVar()
+        tk.Entry(form, textvariable=self._task_name_var,
+                 bg="#1a1a2e", fg="#e8e8e8", insertbackground="#e8e8e8",
+                 font=("Courier New", 9), relief="flat",
+                 highlightthickness=1, highlightcolor="#333366",
+                 width=18).grid(row=0, column=1, padx=4, ipady=2, sticky="ew")
+
+        tk.Label(form, text="Points", bg="#0f0f0f", fg="#aaaaaa",
+                 font=("Courier New", 8)).grid(row=1, column=0, sticky="w", pady=(4, 0))
+        self._task_points_var = tk.StringVar(value="20")
+        tk.Entry(form, textvariable=self._task_points_var,
+                 bg="#1a1a2e", fg="#e8e8e8", insertbackground="#e8e8e8",
+                 font=("Courier New", 9), relief="flat",
+                 highlightthickness=1, highlightcolor="#333366",
+                 width=8).grid(row=1, column=1, padx=4, ipady=2, sticky="w", pady=(4, 0))
+
+        tk.Label(form, text="Deadline", bg="#0f0f0f", fg="#aaaaaa",
+                 font=("Courier New", 8)).grid(row=2, column=0, sticky="w", pady=(4, 0))
+        deadline_frame = tk.Frame(form, bg="#0f0f0f")
+        deadline_frame.grid(row=2, column=1, padx=4, sticky="ew", pady=(4, 0))
+        self._task_deadline_date_var = tk.StringVar(
+            value=(datetime.date.today() + datetime.timedelta(days=1)).isoformat()
+        )
+        tk.Entry(deadline_frame, textvariable=self._task_deadline_date_var,
+                 bg="#1a1a2e", fg="#e8e8e8", insertbackground="#e8e8e8",
+                 font=("Courier New", 9), relief="flat",
+                 highlightthickness=1, highlightcolor="#333366",
+                 width=10).pack(side=tk.LEFT, ipady=2)
+        tk.Label(deadline_frame, text=" ", bg="#0f0f0f", fg="#666666",
+                 font=("Courier New", 8)).pack(side=tk.LEFT)
+        self._task_deadline_time_var = tk.StringVar(value="23:59")
+        tk.Entry(deadline_frame, textvariable=self._task_deadline_time_var,
+                 bg="#1a1a2e", fg="#e8e8e8", insertbackground="#e8e8e8",
+                 font=("Courier New", 9), relief="flat",
+                 highlightthickness=1, highlightcolor="#333366",
+                 width=6).pack(side=tk.LEFT, ipady=2)
+
+        form.grid_columnconfigure(1, weight=1)
+
+        btn_row = tk.Frame(parent, bg="#0f0f0f")
+        btn_row.pack(fill=tk.X, padx=6, pady=(4, 6))
+        self._make_broker_button(
+            btn_row, "Add task", self._add_task, fg="#8dd7ff"
+        ).pack(side=tk.LEFT)
+
+        self._task_list_frame = tk.Frame(parent, bg="#0f0f0f")
+        self._task_list_frame.pack(fill=tk.BOTH, expand=True, padx=6)
+
+        task_scrollbar = tk.Scrollbar(
+            self._task_list_frame, bg="#1a1a2e", troughcolor="#0f0f0f"
+        )
+        task_scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+
+        self._task_canvas = tk.Canvas(
+            self._task_list_frame, bg="#0f0f0f", highlightthickness=0,
+            yscrollcommand=task_scrollbar.set
+        )
+        self._task_canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        self._task_inner = tk.Frame(self._task_canvas, bg="#0f0f0f")
+        self._task_canvas.create_window((0, 0), window=self._task_inner, anchor="nw")
+        task_scrollbar.config(command=self._task_canvas.yview)
+        self._task_inner.bind("<Configure>",
+            lambda e: self._task_canvas.config(
+                scrollregion=self._task_canvas.bbox("all")))
+        self._build_task_list()
+
+    def _build_task_list(self):
+        for w in self._task_inner.winfo_children():
+            w.destroy()
+
+        open_tasks = [t for t in self.data["tasks"] if t["status"] == "open"]
+        if not open_tasks:
+            tk.Label(self._task_inner, text="No open tasks.",
+                     bg="#0f0f0f", fg="#555555",
+                     font=("Courier New", 9)).pack(pady=10)
+            return
+
+        now = datetime.datetime.now()
+        for task in open_tasks:
+            dl_str = task.get("deadline", "")
+            try:
+                dl_dt = datetime.datetime.fromisoformat(dl_str) if dl_str else None
+            except Exception:
+                dl_dt = None
+            overdue = dl_dt is not None and now > dl_dt
+
+            border_color = "#e65757" if overdue else "#2a3a4f"
+            row = tk.Frame(self._task_inner, bg="#131d2e",
+                           highlightthickness=1, highlightbackground=border_color)
+            row.pack(fill=tk.X, pady=2)
+
+            pts = task.get("points", 0)
+            sign = "+" if pts > 0 else ""
+
+            info_frame = tk.Frame(row, bg="#131d2e")
+            info_frame.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=6, pady=4)
+
+            tk.Label(
+                info_frame,
+                text=task["name"],
+                bg="#131d2e",
+                fg="#e7edf7",
+                font=("Segoe UI", 9, "bold"),
+                anchor="w",
+                justify=tk.LEFT,
+                wraplength=180,
+            ).pack(anchor="w", fill=tk.X)
+
+            deadline_display = dl_str[:16] if dl_str else "no deadline"
+            status_text = f"{sign}{pts} pts  |  due: {deadline_display}"
+            if overdue:
+                status_text += "  OVERDUE"
+            status_fg = "#e65757" if overdue else "#8ea1b9"
+            tk.Label(
+                info_frame,
+                text=status_text,
+                bg="#131d2e",
+                fg=status_fg,
+                font=("Courier New", 8),
+                anchor="w",
+                justify=tk.LEFT,
+                wraplength=180,
+            ).pack(anchor="w", fill=tk.X)
+
+            btn_frame = tk.Frame(row, bg="#131d2e")
+            btn_frame.pack(side=tk.RIGHT, padx=4, pady=4)
+
+            self._make_broker_button(
+                btn_frame, "✓", lambda _t=task: self._complete_task(_t),
+                fg="#22d3a6", bg="#153429", hover_bg="#1f4b3a"
+            ).pack(side=tk.LEFT, padx=(0, 2))
+            self._make_broker_button(
+                btn_frame, "✗", lambda _t=task: self._delete_task(_t),
+                fg="#e65757", bg="#3a1d25", hover_bg="#5a2b36"
+            ).pack(side=tk.LEFT)
+
+    def _add_task(self):
+        name = self._task_name_var.get().strip()
+        pts_str = self._task_points_var.get().strip()
+        date_str = self._task_deadline_date_var.get().strip()
+        time_str = self._task_deadline_time_var.get().strip()
+
+        if not name:
+            messagebox.showwarning("Missing info", "Enter a task name.")
+            return
+        try:
+            pts = int(pts_str)
+        except ValueError:
+            messagebox.showerror("Invalid points", "Points must be an integer.")
+            return
+
+        try:
+            dl_date = datetime.date.fromisoformat(date_str)
+        except ValueError:
+            messagebox.showerror("Invalid date", "Deadline date must be YYYY-MM-DD.")
+            return
+        try:
+            _, dl_h, dl_m = parse_hhmm(time_str)
+        except ValueError:
+            messagebox.showerror("Invalid time", "Deadline time must be HH:MM.")
+            return
+
+        deadline_dt = datetime.datetime.combine(
+            dl_date, datetime.time(hour=dl_h, minute=dl_m)
+        )
+
+        task = {
+            "id": datetime.datetime.now().isoformat(),
+            "name": name,
+            "points": abs(pts),
+            "deadline": deadline_dt.isoformat(),
+            "status": "open",
+            "created": datetime.datetime.now().isoformat(),
+        }
+        self.data["tasks"].append(task)
+        save_data(self.data)
+        self._task_name_var.set("")
+        self._build_task_list()
+
+    def _complete_task(self, task):
+        self._maybe_auto_close_day()
+        task["status"] = "completed"
+        pts = abs(task.get("points", 0))
+        adjusted_points, streak_multiplier = self._apply_streak_multiplier(pts)
+        log_date = self.data.get("current_open_day", self.today)
+        self.data["log"].append({
+            "date": log_date,
+            "habit": f"[TASK] {task['name']}",
+            "points": adjusted_points,
+            "base_points": pts,
+            "streak_kind": self.data.get("streak_kind"),
+            "streak_count": self.data.get("streak_count", 0),
+            "streak_multiplier": streak_multiplier,
+            "timestamp": datetime.datetime.now().isoformat(),
+        })
+        save_data(self.data)
+        self._build_task_list()
+        self._update_display()
+        self._refresh_chart()
+
+    def _delete_task(self, task):
+        self.data["tasks"] = [
+            t for t in self.data["tasks"] if t.get("id") != task.get("id")
+        ]
+        save_data(self.data)
+        self._build_task_list()
+
+    def _check_task_deadlines(self):
+        self._maybe_auto_close_day()
+        now = datetime.datetime.now()
+        expired_any = False
+        for task in self.data["tasks"]:
+            if task["status"] != "open":
+                continue
+            dl_str = task.get("deadline")
+            if not dl_str:
+                continue
+            try:
+                dl_dt = datetime.datetime.fromisoformat(dl_str)
+            except Exception:
+                continue
+            if now > dl_dt:
+                task["status"] = "expired"
+                pts = abs(task.get("points", 0))
+                adjusted_points, streak_multiplier = self._apply_streak_multiplier(-pts)
+                log_date = self.data.get("current_open_day", self.today)
+                self.data["log"].append({
+                    "date": log_date,
+                    "habit": f"[EXPIRED] {task['name']}",
+                    "points": adjusted_points,
+                    "base_points": -pts,
+                    "streak_kind": self.data.get("streak_kind"),
+                    "streak_count": self.data.get("streak_count", 0),
+                    "streak_multiplier": streak_multiplier,
+                    "timestamp": now.isoformat(),
+                })
+                expired_any = True
+        if expired_any:
+            save_data(self.data)
+            self._build_task_list()
+            self._update_display()
+            self._refresh_chart()
+        self.root.after(30000, self._check_task_deadlines)
 
     def _start_ui_animations(self):
         self._animate_market_ui()
@@ -920,6 +1449,34 @@ class HabitTrackerApp:
 
     def _open_settings_dialog(self):
         SettingsDialog(self.root, self)
+
+    def _open_custom_habit_dialog(self):
+        CustomHabitDialog(self.root, self)
+
+    def _open_habit_library_dialog(self):
+        HabitLibraryDialog(self.root, self)
+
+    def _schedule_live_tracking(self, habit):
+        cfg = habit.get("live_tracking", {})
+        if not isinstance(cfg, dict) or not cfg.get("enabled"):
+            return
+        duration_min = max(float(cfg.get("duration_minutes", 30.0)), 1.0)
+        interval_sec = max(float(cfg.get("interval_seconds", 60.0)), 1.0)
+        amount = max(float(cfg.get("amount", 1.0)), 0.0)
+        variance = max(float(cfg.get("variance", 0.15)), 0.0)
+        ticks = max(1, int((duration_min * 60.0) / interval_sec))
+
+        def _tick(remaining):
+            if remaining <= 0:
+                return
+            base = float(habit.get("points", 0))
+            rnd = random.uniform(1.0 - variance, 1.0 + variance)
+            rnd = max(rnd, 0.0)
+            dynamic_points = int(round(base * amount * rnd))
+            self._log_habit({"name": habit.get("name", "Custom habit"), "points": dynamic_points})
+            self.root.after(int(interval_sec * 1000), lambda: _tick(remaining - 1))
+
+        _tick(ticks)
 
     def _apply_streak_multiplier(self, base_points):
         """
@@ -951,7 +1508,16 @@ class HabitTrackerApp:
         prev_kind = self.data.get("streak_kind")
         prev_count = int(self.data.get("streak_count", 0))
         prev_multiplier = float(self.data.get("streak_multiplier", 1.0))
-        if prev_kind == kind:
+        carry_active = bool(self.data.get("positive_streak_carry_active", False))
+        carry_multiplier = float(self.data.get("positive_streak_carry_multiplier", 1.0))
+        carry_count = int(self.data.get("positive_streak_carry_count", 0))
+
+        use_positive_carry = (
+            kind == "positive" and prev_kind == "negative" and carry_active
+        )
+        if use_positive_carry:
+            streak_count = max(carry_count, 1)
+        elif prev_kind == kind:
             streak_count = prev_count + 1
         else:
             streak_count = 1
@@ -959,9 +1525,18 @@ class HabitTrackerApp:
         negative_base_from_positive = (
             base_points < 0 and prev_kind == "positive" and prev_count > 0
         )
+        breaking_losing_streak = (kind == "positive" and prev_kind == "negative")
+        if breaking_losing_streak and prev_count > 8:
+            comeback_boost = 1.65
+        elif breaking_losing_streak and prev_count > 4:
+            comeback_boost = 1.30
+        else:
+            comeback_boost = 1.0
 
         # No boost for the first two; exponential from the third onward.
-        if streak_count <= 2:
+        if use_positive_carry:
+            multiplier = max(carry_multiplier, 1.0)
+        elif streak_count <= 2:
             if negative_base_from_positive:
                 multiplier = max(neg_start_ratio * prev_multiplier, 1.0)
             else:
@@ -972,6 +1547,9 @@ class HabitTrackerApp:
             if negative_base_from_positive:
                 multiplier *= max(neg_start_ratio * prev_multiplier, 1.0)
 
+        if comeback_boost > 1.0:
+            multiplier *= comeback_boost
+
         if kind == "positive":
             multiplier = min(multiplier, pos_cap)
         else:
@@ -981,6 +1559,20 @@ class HabitTrackerApp:
         self.data["streak_kind"] = kind
         self.data["streak_count"] = streak_count
         self.data["streak_multiplier"] = multiplier
+        if negative_base_from_positive:
+            # Keep positive streak alive after a single negative by reducing it by 65%.
+            self.data["positive_streak_carry_active"] = True
+            self.data["positive_streak_carry_multiplier"] = max(prev_multiplier * 0.35, 1.0)
+            self.data["positive_streak_carry_count"] = max(prev_count, 1)
+        elif kind == "negative" and prev_kind == "negative":
+            # Only a singular negative preserves the prior positive streak.
+            self.data["positive_streak_carry_active"] = False
+            self.data["positive_streak_carry_multiplier"] = 1.0
+            self.data["positive_streak_carry_count"] = 0
+        elif kind == "positive":
+            self.data["positive_streak_carry_active"] = False
+            self.data["positive_streak_carry_multiplier"] = 1.0
+            self.data["positive_streak_carry_count"] = 0
         return adjusted_points, multiplier
 
     def _log_habit(self, habit):
@@ -997,27 +1589,65 @@ class HabitTrackerApp:
             "streak_multiplier": streak_multiplier,
             "timestamp": datetime.datetime.now().isoformat(),
         })
+        for h in self.data.get("habits", []):
+            if h.get("name") == habit.get("name"):
+                h["execution_count"] = int(h.get("execution_count", 0)) + 1
+                break
         save_data(self.data)
         self._update_display()
         self._refresh_chart()
 
-    def _add_custom_habit(self):
-        name    = self.custom_name.get().strip()
-        pts_str = self.custom_pts.get().strip()
+    def _add_custom_habit(self, name=None, pts_str=None,
+                          category="General",
+                          live_tracking_enabled=False,
+                          live_duration_minutes="",
+                          live_interval_seconds="",
+                          live_amount="",
+                          live_variance=""):
+        name = (name or "").strip()
+        pts_str = (pts_str or "").strip()
         if not name or not pts_str:
             messagebox.showwarning("Missing info", "Enter a habit name and points.")
-            return
+            return False
         try:
             pts = int(pts_str)
         except ValueError:
             messagebox.showerror("Invalid points",
                                  "Points must be an integer (e.g. 20 or -10).")
-            return
-        habit = {"name": name, "points": pts, "emoji": "★"}
+            return False
+        try:
+            duration = float(live_duration_minutes) if str(live_duration_minutes).strip() else 30.0
+            interval = float(live_interval_seconds) if str(live_interval_seconds).strip() else 60.0
+            amount = float(live_amount) if str(live_amount).strip() else 1.0
+            variance = float(live_variance) if str(live_variance).strip() else 0.15
+        except ValueError:
+            messagebox.showerror("Invalid live tracking", "Duration, interval, amount and variance must be numeric.")
+            return False
+        if duration <= 0 or interval <= 0 or amount <= 0 or variance < 0:
+            messagebox.showerror("Invalid live tracking", "Duration/interval/amount must be > 0, variance >= 0.")
+            return False
+
+        habit = {
+            "name": name,
+            "points": pts,
+            "emoji": "★",
+            "category": category if str(category).strip() else "General",
+            "execution_count": 0,
+            "live_tracking": {
+                "enabled": bool(live_tracking_enabled),
+                "duration_minutes": duration,
+                "interval_seconds": interval,
+                "amount": amount,
+                "variance": variance,
+            }
+        }
         self.data["habits"].append(habit)
         save_data(self.data)
         self._build_habit_buttons()
         self._log_habit(habit)
+        if habit["live_tracking"]["enabled"]:
+            self._schedule_live_tracking(habit)
+        return True
 
     def _on_chart_click(self, event):
         if event.inaxes != self.ax or not self._candle_dates:
@@ -1487,13 +2117,16 @@ class HabitTrackerApp:
         for entry in new_log:
             if not any(h["name"] == entry["habit"] for h in self.data["habits"]):
                 self.data["habits"].append({
-                    "name": entry["habit"], "points": entry["points"], "emoji": "★"
+                    "name": entry["habit"], "points": entry["points"], "emoji": "★",
+                    "category": "General", "execution_count": 0
                 })
 
         if self.data["log"]:
             first_date = min(e["date"] for e in self.data["log"])
             self.data["current_open_day"] = first_date
 
+        ensure_habit_metadata(self.data)
+        recalc_habit_execution_counts(self.data)
         save_data(self.data)
         self._build_habit_buttons()
         self._update_display()
@@ -1563,7 +2196,8 @@ class HabitTrackerApp:
 
         total = len(candles)
         max_start = max(0, total - MAX_VISIBLE_CANDLES)
-        self._chart_view_start = min(max(self._chart_view_start, 0), max_start)
+        # Anchor every chart to the latest candlestick (right edge).
+        self._chart_view_start = max_start
         self.chart_scroll.config(to=max_start)
         self.chart_scroll.set(self._chart_view_start)
         self.chart_scroll.config(state=tk.NORMAL if max_start > 0 else tk.DISABLED)

@@ -98,6 +98,10 @@ def ensure_session_settings(data):
         ms["negative_step_factor"] = 4.0
     if "negative_start_ratio_from_positive" not in ms:
         ms["negative_start_ratio_from_positive"] = 0.75
+    if "positive_cap" not in ms:
+        ms["positive_cap"] = 100.0
+    if "negative_cap" not in ms:
+        ms["negative_cap"] = 200.0
 
 def parse_hhmm(raw):
     text = str(raw).strip()
@@ -482,6 +486,8 @@ class SettingsDialog(tk.Toplevel):
         self.negative_start_ratio_var = tk.StringVar(
             value=str(ms.get("negative_start_ratio_from_positive", 0.75))
         )
+        self.positive_cap_var = tk.StringVar(value=str(ms.get("positive_cap", 100.0)))
+        self.negative_cap_var = tk.StringVar(value=str(ms.get("negative_cap", 200.0)))
 
         tk.Label(multipliers_tab, text="Positive step factor (>= 1.0)",
                  bg="#0f0f0f", fg="#d6deea", font=("Segoe UI", 9)).pack(anchor="w", pady=(8, 2))
@@ -498,6 +504,18 @@ class SettingsDialog(tk.Toplevel):
         tk.Label(multipliers_tab, text="Negative start ratio from positive (0.0 - 1.0+)",
                  bg="#0f0f0f", fg="#d6deea", font=("Segoe UI", 9)).pack(anchor="w", pady=(10, 2))
         tk.Entry(multipliers_tab, textvariable=self.negative_start_ratio_var,
+                 bg="#1a263a", fg="#e8e8e8", insertbackground="#e8e8e8",
+                 relief="flat", width=16).pack(anchor="w", ipady=3)
+
+        tk.Label(multipliers_tab, text="Positive multiplier cap (>= 1.0)",
+                 bg="#0f0f0f", fg="#d6deea", font=("Segoe UI", 9)).pack(anchor="w", pady=(10, 2))
+        tk.Entry(multipliers_tab, textvariable=self.positive_cap_var,
+                 bg="#1a263a", fg="#e8e8e8", insertbackground="#e8e8e8",
+                 relief="flat", width=16).pack(anchor="w", ipady=3)
+
+        tk.Label(multipliers_tab, text="Negative multiplier cap (>= 1.0)",
+                 bg="#0f0f0f", fg="#d6deea", font=("Segoe UI", 9)).pack(anchor="w", pady=(10, 2))
+        tk.Entry(multipliers_tab, textvariable=self.negative_cap_var,
                  bg="#1a263a", fg="#e8e8e8", insertbackground="#e8e8e8",
                  relief="flat", width=16).pack(anchor="w", ipady=3)
 
@@ -519,13 +537,15 @@ class SettingsDialog(tk.Toplevel):
             positive = float(self.positive_factor_var.get().strip())
             negative = float(self.negative_factor_var.get().strip())
             ratio = float(self.negative_start_ratio_var.get().strip())
+            positive_cap = float(self.positive_cap_var.get().strip())
+            negative_cap = float(self.negative_cap_var.get().strip())
         except ValueError:
             messagebox.showerror("Invalid values", "All multiplier values must be numeric.", parent=self)
             return
-        if positive < 1.0 or negative < 1.0 or ratio < 0.0:
+        if positive < 1.0 or negative < 1.0 or ratio < 0.0 or positive_cap < 1.0 or negative_cap < 1.0:
             messagebox.showerror(
                 "Invalid range",
-                "Positive/negative factors must be >= 1.0 and ratio must be >= 0.0.",
+                "Factors/caps must be >= 1.0 and ratio must be >= 0.0.",
                 parent=self,
             )
             return
@@ -533,6 +553,8 @@ class SettingsDialog(tk.Toplevel):
         self.app.data["multiplier_settings"]["positive_step_factor"] = positive
         self.app.data["multiplier_settings"]["negative_step_factor"] = negative
         self.app.data["multiplier_settings"]["negative_start_ratio_from_positive"] = ratio
+        self.app.data["multiplier_settings"]["positive_cap"] = positive_cap
+        self.app.data["multiplier_settings"]["negative_cap"] = negative_cap
         save_data(self.app.data)
         messagebox.showinfo("Saved", "Multiplier settings updated.", parent=self)
 
@@ -912,6 +934,8 @@ class HabitTrackerApp:
         pos_step_factor = max(float(ms.get("positive_step_factor", 3.0)), 1.0)
         neg_step_factor = max(float(ms.get("negative_step_factor", 4.0)), 1.0)
         neg_start_ratio = max(float(ms.get("negative_start_ratio_from_positive", 0.75)), 0.0)
+        pos_cap = max(float(ms.get("positive_cap", 100.0)), 1.0)
+        neg_cap = max(float(ms.get("negative_cap", 200.0)), 1.0)
 
         if base_points > 0:
             kind = "positive"
@@ -947,6 +971,11 @@ class HabitTrackerApp:
             multiplier = step_factor ** (streak_count - 2)
             if negative_base_from_positive:
                 multiplier *= max(neg_start_ratio * prev_multiplier, 1.0)
+
+        if kind == "positive":
+            multiplier = min(multiplier, pos_cap)
+        else:
+            multiplier = min(multiplier, neg_cap)
         adjusted_points = int(round(base_points * multiplier))
 
         self.data["streak_kind"] = kind

@@ -26,6 +26,7 @@ DATA_FILE = "habit_data.json"
 MAX_VISIBLE_CANDLES = 35
 TIMEFRAME_OPTIONS = [
     ("1D", "1 day"),
+    ("SESSION", "session"),
     ("1W", "1 week"),
     ("1M", "1 month"),
     ("6M", "6 months"),
@@ -80,6 +81,25 @@ def ensure_session_settings(data):
         data["auto_close_time"] = "21:00"
     if "auto_last_close_date" not in data:
         data["auto_last_close_date"] = None
+    if "day_open_time" not in data:
+        data["day_open_time"] = "04:30"
+    if "day_close_time" not in data:
+        data["day_close_time"] = "20:30"
+    if "streak_kind" not in data:
+        data["streak_kind"] = None
+    if "streak_count" not in data:
+        data["streak_count"] = 0
+
+def parse_hhmm(raw):
+    text = str(raw).strip()
+    parts = text.split(":")
+    if len(parts) != 2:
+        raise ValueError
+    hour = int(parts[0])
+    minute = int(parts[1])
+    if hour < 0 or hour > 23 or minute < 0 or minute > 59:
+        raise ValueError
+    return f"{hour:02d}:{minute:02d}", hour, minute
 
 def _next_date_str(date_str):
     d = datetime.date.fromisoformat(date_str)
@@ -92,9 +112,21 @@ def compute_candlestick_data(log, manual_close):
     If a day has a manual_close value, it is shown as a marker only and does
     not change cumulative totals.
     """
+    def _effective_date(entry):
+        ts = str(entry.get("timestamp", "")).strip()
+        if ts:
+            try:
+                return datetime.datetime.fromisoformat(ts).date().isoformat()
+            except Exception:
+                pass
+        return entry.get("date")
+
     daily = defaultdict(list)
     for entry in log:
-        daily[entry["date"]].append(entry["points"])
+        day_key = _effective_date(entry)
+        if not day_key:
+            continue
+        daily[day_key].append(entry["points"])
 
     all_dates = sorted(set(list(daily.keys()) + list(manual_close.keys())))
     result = []
@@ -112,8 +144,6 @@ def compute_candlestick_data(log, manual_close):
             low_val  = min(low_val,  cum)
 
         natural_close = cum
-        day_net_points = natural_close - open_val
-
         close_val = natural_close
         running_total = close_val
 
@@ -418,7 +448,7 @@ class HabitTrackerApp:
     def __init__(self, root):
         self.root  = root
         self.root.title("Habit Tracker")
-        self.root.configure(bg="#0f0f0f")
+        self.root.configure(bg="#0b1220")
         self.root.geometry("1150x740")
         self.root.resizable(True, True)
 
@@ -433,26 +463,40 @@ class HabitTrackerApp:
         self._visible_len = 0
         self._chart_timeframe = "6M"
         self._timeframe_buttons = {}
+        self._ui_anim_tick = 0
+        self._live_chart_text = None
 
         self._build_ui()
         self._refresh_chart()
+        self._start_ui_animations()
 
     # ── UI ────────────────────────────────────────────────────────────────── #
+
+    def _make_broker_button(self, parent, text, command, fg="#d6e6ff",
+                            bg="#1a263a", hover_bg="#243653"):
+        btn = tk.Button(
+            parent, text=text, command=command,
+            bg=bg, fg=fg, activebackground=hover_bg, activeforeground="#ffffff",
+            font=("Segoe UI", 9, "bold"), relief="flat", bd=0, padx=8
+        )
+        btn.bind("<Enter>", lambda _e: btn.config(bg=hover_bg))
+        btn.bind("<Leave>", lambda _e: btn.config(bg=bg))
+        return btn
 
     def _build_ui(self):
         style = ttk.Style()
         style.theme_use("clam")
-        style.configure("TFrame",  background="#0f0f0f")
-        style.configure("TLabel",  background="#0f0f0f", foreground="#e8e8e8",
-                         font=("Courier New", 11))
-        style.configure("Header.TLabel", background="#0f0f0f", foreground="#ffffff",
-                         font=("Courier New", 15, "bold"))
-        style.configure("Points.TLabel", background="#0f0f0f", foreground="#00ff88",
-                         font=("Courier New", 22, "bold"))
-        style.configure("TButton", background="#1a1a2e", foreground="#e8e8e8",
-                         font=("Courier New", 10), borderwidth=0, relief="flat")
+        style.configure("TFrame",  background="#0b1220")
+        style.configure("TLabel",  background="#0b1220", foreground="#d6deea",
+                         font=("Segoe UI", 10))
+        style.configure("Header.TLabel", background="#0b1220", foreground="#f4f7fc",
+                         font=("Segoe UI", 15, "bold"))
+        style.configure("Points.TLabel", background="#0b1220", foreground="#22d3a6",
+                         font=("Consolas", 24, "bold"))
+        style.configure("TButton", background="#1a263a", foreground="#dbe8ff",
+                         font=("Segoe UI", 9, "bold"), borderwidth=0, relief="flat")
         style.map("TButton",
-                  background=[("active", "#252545")],
+                  background=[("active", "#243653")],
                   foreground=[("active", "#ffffff")])
 
         # Left panel
@@ -483,14 +527,13 @@ class HabitTrackerApp:
 
         session_box = tk.Frame(left, bg="#0f0f0f")
         session_box.pack(fill=tk.X, pady=(0, 6))
-        tk.Button(session_box, text="Close candle now",
-                  bg="#3a1010", fg="#ff8888", activebackground="#551818",
-                  font=("Courier New", 9), relief="flat", padx=8,
-                  command=self._manual_close_open_day).pack(side=tk.LEFT)
-        tk.Button(session_box, text="Open previous day",
-                  bg="#10223a", fg="#7fb5ff", activebackground="#163154",
-                  font=("Courier New", 9), relief="flat", padx=8,
-                  command=self._open_previous_day).pack(side=tk.LEFT, padx=(6, 0))
+        self._make_broker_button(
+            session_box, "Close candle now", self._manual_close_open_day,
+            fg="#ff8f9a", bg="#3a1b26", hover_bg="#4f2633"
+        ).pack(side=tk.LEFT)
+        self._make_broker_button(
+            session_box, "Open previous day", self._open_previous_day
+        ).pack(side=tk.LEFT, padx=(6, 0))
 
         auto_box = tk.Frame(left, bg="#0f0f0f")
         auto_box.pack(fill=tk.X, pady=(0, 8))
@@ -511,21 +554,38 @@ class HabitTrackerApp:
                  font=("Courier New", 9), relief="flat",
                  highlightthickness=1, highlightcolor="#333366",
                  width=6).pack(side=tk.LEFT, padx=(6, 4), ipady=2)
-        tk.Button(auto_box, text="Set time",
-                  bg="#1a1a2e", fg="#aaaaee", activebackground="#252545",
-                  font=("Courier New", 9), relief="flat", padx=6,
-                  command=self._save_auto_close_settings).pack(side=tk.LEFT)
+        self._make_broker_button(auto_box, "Set time", self._save_auto_close_settings).pack(side=tk.LEFT)
+
+        day_window_box = tk.Frame(left, bg="#0f0f0f")
+        day_window_box.pack(fill=tk.X, pady=(0, 8))
+        tk.Label(day_window_box, text="Day window",
+                 bg="#0f0f0f", fg="#bbbbbb",
+                 font=("Courier New", 9)).pack(side=tk.LEFT)
+        self.day_open_time_var = tk.StringVar(
+            value=str(self.data.get("day_open_time", "04:30"))
+        )
+        tk.Entry(day_window_box, textvariable=self.day_open_time_var,
+                 bg="#1a1a2e", fg="#e8e8e8", insertbackground="#e8e8e8",
+                 font=("Courier New", 9), relief="flat",
+                 highlightthickness=1, highlightcolor="#333366",
+                 width=6).pack(side=tk.LEFT, padx=(6, 4), ipady=2)
+        tk.Label(day_window_box, text="to",
+                 bg="#0f0f0f", fg="#888888",
+                 font=("Courier New", 9)).pack(side=tk.LEFT)
+        self.day_close_time_var = tk.StringVar(
+            value=str(self.data.get("day_close_time", "20:30"))
+        )
+        tk.Entry(day_window_box, textvariable=self.day_close_time_var,
+                 bg="#1a1a2e", fg="#e8e8e8", insertbackground="#e8e8e8",
+                 font=("Courier New", 9), relief="flat",
+                 highlightthickness=1, highlightcolor="#333366",
+                 width=6).pack(side=tk.LEFT, padx=(4, 4), ipady=2)
+        self._make_broker_button(day_window_box, "Apply 16h", self._save_day_window_settings).pack(side=tk.LEFT)
 
         csv_box = tk.Frame(left, bg="#0f0f0f")
         csv_box.pack(fill=tk.X, pady=(0, 8))
-        tk.Button(csv_box, text="Export CSV",
-                  bg="#1a1a2e", fg="#aaddff", activebackground="#252545",
-                  font=("Courier New", 9), relief="flat", padx=8,
-                  command=self._export_csv).pack(side=tk.LEFT)
-        tk.Button(csv_box, text="Import CSV",
-                  bg="#1a1a2e", fg="#ffd48a", activebackground="#252545",
-                  font=("Courier New", 9), relief="flat", padx=8,
-                  command=self._import_csv).pack(side=tk.LEFT, padx=(6, 0))
+        self._make_broker_button(csv_box, "Export CSV", self._export_csv, fg="#8dd7ff").pack(side=tk.LEFT)
+        self._make_broker_button(csv_box, "Import CSV", self._import_csv, fg="#ffd49a").pack(side=tk.LEFT, padx=(6, 0))
 
         ttk.Separator(left, orient="horizontal").pack(fill=tk.X, pady=6)
         ttk.Label(left, text="LOG A HABIT",
@@ -603,11 +663,11 @@ class HabitTrackerApp:
         hdr = tk.Frame(right, bg="#0f0f0f")
         hdr.pack(fill=tk.X)
         tk.Label(hdr, text="PERFORMANCE CHART  (Candlestick)",
-                 bg="#0f0f0f", fg="#ffffff",
-                 font=("Courier New", 12, "bold")).pack(side=tk.LEFT)
+                 bg="#0b1220", fg="#ffffff",
+                 font=("Segoe UI", 12, "bold")).pack(side=tk.LEFT)
         tk.Label(hdr, text="  ← click any candle to edit that day",
-                 bg="#0f0f0f", fg="#555577",
-                 font=("Courier New", 9)).pack(side=tk.LEFT, pady=(4, 0))
+                 bg="#0b1220", fg="#6c83a1",
+                 font=("Segoe UI", 9)).pack(side=tk.LEFT, pady=(4, 0))
 
         tabs = tk.Frame(right, bg="#0f0f0f")
         tabs.pack(fill=tk.X, pady=(8, 2))
@@ -658,23 +718,81 @@ class HabitTrackerApp:
             color = "#00cc66" if pts >= 0 else "#cc3333"
             sign  = "+" if pts > 0 else ""
             label = f"{habit.get('emoji','●')}  {habit['name']}  ({sign}{pts})"
-            tk.Button(
+            btn = tk.Button(
                 self.habit_frame, text=label,
-                bg="#1a1a2e", fg=color, activebackground="#252545",
-                activeforeground=color, font=("Courier New", 9),
+                bg="#1a263a", fg=color, activebackground="#243653",
+                activeforeground=color, font=("Segoe UI", 9),
                 relief="flat", anchor="w", padx=8,
                 command=lambda h=habit: self._log_habit(h)
-            ).pack(fill=tk.X, pady=2, ipady=4)
+            )
+            btn.bind("<Enter>", lambda _e, b=btn: b.config(bg="#243653"))
+            btn.bind("<Leave>", lambda _e, b=btn: b.config(bg="#1a263a"))
+            btn.pack(fill=tk.X, pady=2, ipady=4)
+
+    def _start_ui_animations(self):
+        self._animate_market_ui()
+
+    def _animate_market_ui(self):
+        self._ui_anim_tick += 1
+        phase = self._ui_anim_tick % 24
+        glow = 145 + (phase if phase <= 12 else 24 - phase) * 5
+        ttk.Style().configure("Points.TLabel", foreground=f"#22{glow:02x}a6")
+        if self._live_chart_text is not None:
+            dot = "●" if phase < 12 else "○"
+            self._live_chart_text.set_text(f"{dot} LIVE  {datetime.datetime.now().strftime('%H:%M:%S')}")
+            self._live_chart_text.set_color("#28d7ab" if phase < 12 else "#4f708a")
+            self.canvas_widget.draw_idle()
+        self.root.after(450, self._animate_market_ui)
 
     # ── Actions ───────────────────────────────────────────────────────────── #
 
+    def _apply_streak_multiplier(self, base_points):
+        """
+        Consecutive habits of the same sign build a streak multiplier.
+        Negative streak growth is intentionally stronger than positive.
+        """
+        if base_points > 0:
+            kind = "positive"
+            growth = 0.10
+        elif base_points < 0:
+            kind = "negative"
+            growth = 0.25
+        else:
+            self.data["streak_kind"] = None
+            self.data["streak_count"] = 0
+            return base_points, 1.0
+
+        prev_kind = self.data.get("streak_kind")
+        prev_count = int(self.data.get("streak_count", 0))
+        if prev_kind == kind:
+            streak_count = prev_count + 1
+        else:
+            streak_count = 1
+
+        # Linear for first two habits; exponential from the third onward.
+        if streak_count <= 2:
+            multiplier = 1.0 + (streak_count - 1) * growth
+        else:
+            # Third in a row is the pivot: growth compounds after that.
+            multiplier = (1.0 + growth) * ((1.0 + growth) ** (streak_count - 2))
+        adjusted_points = int(round(base_points * multiplier))
+
+        self.data["streak_kind"] = kind
+        self.data["streak_count"] = streak_count
+        return adjusted_points, multiplier
+
     def _log_habit(self, habit):
         self._maybe_auto_close_day()
+        adjusted_points, streak_multiplier = self._apply_streak_multiplier(habit["points"])
         log_date = self.data.get("current_open_day", self.today)
         self.data["log"].append({
             "date":      log_date,
             "habit":     habit["name"],
-            "points":    habit["points"],
+            "points":    adjusted_points,
+            "base_points": habit["points"],
+            "streak_kind": self.data.get("streak_kind"),
+            "streak_count": self.data.get("streak_count", 0),
+            "streak_multiplier": streak_multiplier,
             "timestamp": datetime.datetime.now().isoformat(),
         })
         save_data(self.data)
@@ -746,6 +864,8 @@ class HabitTrackerApp:
         tf = self._chart_timeframe
         if tf == "1D":
             start = anchor
+        elif tf == "SESSION":
+            return candles
         elif tf == "1W":
             start = anchor - datetime.timedelta(days=6)
         elif tf == "1M":
@@ -764,6 +884,181 @@ class HabitTrackerApp:
             if start <= d <= anchor
         ]
         return filtered if filtered else [candles[-1]]
+
+    def _entry_datetime(self, entry):
+        ts = str(entry.get("timestamp", "")).strip()
+        if ts:
+            try:
+                return datetime.datetime.fromisoformat(ts)
+            except Exception:
+                pass
+        d = entry.get("date")
+        if d:
+            try:
+                return datetime.datetime.combine(
+                    datetime.date.fromisoformat(d),
+                    datetime.time(hour=12, minute=0),
+                )
+            except Exception:
+                pass
+        return None
+
+    def _build_1d_intraday_candles(self):
+        """
+        Session view: current 16-hour day window based on configured open/close.
+        Each logged habit entry inside that window becomes one candlestick.
+        """
+        now = datetime.datetime.now()
+        try:
+            _, _, open_h, open_m, close_h, close_m = self._parse_day_window_times()
+        except ValueError:
+            open_h, open_m, close_h, close_m = 4, 30, 20, 30
+
+        today = now.date()
+        session_open = datetime.datetime.combine(today, datetime.time(hour=open_h, minute=open_m))
+        session_close = datetime.datetime.combine(today, datetime.time(hour=close_h, minute=close_m))
+        if now < session_open:
+            prev = today - datetime.timedelta(days=1)
+            session_open = datetime.datetime.combine(prev, datetime.time(hour=open_h, minute=open_m))
+            session_close = datetime.datetime.combine(prev, datetime.time(hour=close_h, minute=close_m))
+
+        enriched = []
+        for e in self.data.get("log", []):
+            dt = self._entry_datetime(e)
+            if dt is None:
+                continue
+            enriched.append((dt, e))
+        enriched.sort(key=lambda x: x[0])
+
+        session_end = min(now, session_close)
+        window = [(dt, e) for (dt, e) in enriched if session_open <= dt <= session_end]
+        if not window:
+            return []
+
+        first_dt = window[0][0]
+        start_total = 0
+        for dt, e in enriched:
+            if dt >= first_dt:
+                break
+            try:
+                start_total += int(e.get("points", 0))
+            except Exception:
+                continue
+
+        multi_day = len({(e.get("date") or "") for _, e in window}) > 1
+
+        candles = []
+        running_total = start_total
+        last_habit = None
+        for dt, e in window:
+            try:
+                delta = int(e.get("points", 0))
+            except Exception:
+                continue
+
+            current_habit = str(e.get("habit", ""))
+            if candles and current_habit and current_habit == last_habit:
+                # Merge back-to-back same-habit logs into the existing candle.
+                c = candles[-1]
+                close_val = c["close"] + delta
+                c["close"] = close_val
+                c["high"] = max(c["high"], close_val)
+                c["low"] = min(c["low"], close_val)
+                running_total = close_val
+            else:
+                open_val = running_total
+                close_val = open_val + delta
+                candles.append({
+                    "date": e.get("date") or dt.date().isoformat(),
+                    "open": open_val,
+                    "high": max(open_val, close_val),
+                    "low": min(open_val, close_val),
+                    "close": close_val,
+                    "is_manual": False,
+                    "manual_close": None,
+                    "x_label": dt.strftime("%m-%d %H:%M") if multi_day else dt.strftime("%H:%M"),
+                })
+                running_total = close_val
+            last_habit = current_habit
+
+        return candles
+
+    def _build_session_hourly_candles(self):
+        """
+        Build automatic 1-hour candles within the configured daily session window.
+        Values are cumulative and include all streak/multiplier-adjusted points.
+        """
+        now = datetime.datetime.now()
+        try:
+            _, _, open_h, open_m, close_h, close_m = self._parse_day_window_times()
+        except ValueError:
+            open_h, open_m, close_h, close_m = 4, 30, 20, 30
+
+        today = now.date()
+        session_open = datetime.datetime.combine(today, datetime.time(hour=open_h, minute=open_m))
+        session_close = datetime.datetime.combine(today, datetime.time(hour=close_h, minute=close_m))
+        if now < session_open:
+            prev = today - datetime.timedelta(days=1)
+            session_open = datetime.datetime.combine(prev, datetime.time(hour=open_h, minute=open_m))
+            session_close = datetime.datetime.combine(prev, datetime.time(hour=close_h, minute=close_m))
+
+        enriched = []
+        for e in self.data.get("log", []):
+            dt = self._entry_datetime(e)
+            if dt is None:
+                continue
+            enriched.append((dt, e))
+        enriched.sort(key=lambda x: x[0])
+        if not enriched:
+            return []
+
+        start_total = 0
+        for dt, e in enriched:
+            if dt >= session_open:
+                break
+            try:
+                start_total += int(e.get("points", 0))
+            except Exception:
+                continue
+
+        bins = []
+        for i in range(16):
+            bin_start = session_open + datetime.timedelta(hours=i)
+            bin_end = bin_start + datetime.timedelta(hours=1)
+            if bin_start >= session_close:
+                break
+            if now < bin_start:
+                break
+            bins.append((bin_start, min(bin_end, session_close, now)))
+
+        if not bins:
+            return []
+
+        candles = []
+        running_total = start_total
+        for bin_start, bin_end in bins:
+            delta = 0
+            for dt, e in enriched:
+                if bin_start <= dt < bin_end:
+                    try:
+                        delta += int(e.get("points", 0))
+                    except Exception:
+                        continue
+            open_val = running_total
+            close_val = open_val + delta
+            candles.append({
+                "date": bin_start.date().isoformat(),
+                "open": open_val,
+                "high": max(open_val, close_val),
+                "low": min(open_val, close_val),
+                "close": close_val,
+                "is_manual": False,
+                "manual_close": None,
+                "x_label": bin_start.strftime("%H:%M"),
+            })
+            running_total = close_val
+
+        return candles
 
     # ── Display ───────────────────────────────────────────────────────────── #
 
@@ -797,15 +1092,18 @@ class HabitTrackerApp:
         self._refresh_chart()
 
     def _parse_auto_close_time(self):
-        raw = str(self.auto_close_time_var.get()).strip()
-        parts = raw.split(":")
-        if len(parts) != 2:
-            raise ValueError
-        hour = int(parts[0])
-        minute = int(parts[1])
-        if hour < 0 or hour > 23 or minute < 0 or minute > 59:
-            raise ValueError
-        return f"{hour:02d}:{minute:02d}", hour, minute
+        return parse_hhmm(self.auto_close_time_var.get())
+
+    def _parse_day_window_times(self):
+        open_norm, open_h, open_m = parse_hhmm(self.day_open_time_var.get())
+        close_norm, close_h, close_m = parse_hhmm(self.day_close_time_var.get())
+        open_minutes = open_h * 60 + open_m
+        close_minutes = close_h * 60 + close_m
+        if close_minutes <= open_minutes:
+            raise ValueError("Close must be later than open on the same day.")
+        if (close_minutes - open_minutes) != (16 * 60):
+            raise ValueError("Daily candlestick window must be exactly 16 hours.")
+        return open_norm, close_norm, open_h, open_m, close_h, close_m
 
     def _save_auto_close_settings(self):
         try:
@@ -821,6 +1119,24 @@ class HabitTrackerApp:
         save_data(self.data)
         self._maybe_auto_close_day()
         self._update_display()
+
+    def _save_day_window_settings(self):
+        try:
+            open_norm, close_norm, _, _, _, _ = self._parse_day_window_times()
+        except ValueError as exc:
+            messagebox.showerror(
+                "Invalid day window",
+                f"{exc}\nExample: open 04:30 and close 20:30.",
+            )
+            self.day_open_time_var.set(str(self.data.get("day_open_time", "04:30")))
+            self.day_close_time_var.set(str(self.data.get("day_close_time", "20:30")))
+            return
+        self.day_open_time_var.set(open_norm)
+        self.day_close_time_var.set(close_norm)
+        self.data["day_open_time"] = open_norm
+        self.data["day_close_time"] = close_norm
+        save_data(self.data)
+        self._refresh_chart()
 
     def _export_csv(self):
         default_name = f"habit_points_{datetime.date.today().isoformat()}.csv"
@@ -1027,13 +1343,18 @@ class HabitTrackerApp:
         self.ax.clear()
         all_candles = compute_candlestick_data(
             self.data["log"], self.data.get("manual_close", {}))
-        candles = self._filter_candles_by_timeframe(all_candles)
+        if self._chart_timeframe == "1D":
+            candles = self._build_1d_intraday_candles()
+        elif self._chart_timeframe == "SESSION":
+            candles = self._build_session_hourly_candles()
+        else:
+            candles = self._filter_candles_by_timeframe(all_candles)
         self._candle_dates = [c["date"] for c in candles]
 
         if not candles:
             self.ax.text(0.5, 0.5,
                          "No data yet.\nLog some habits to see your chart!",
-                         ha="center", va="center", color="#555555",
+                         ha="center", va="center", color="#58708a",
                          fontsize=12, transform=self.ax.transAxes)
             self.canvas_widget.draw()
             return
@@ -1063,7 +1384,7 @@ class HabitTrackerApp:
         width = 0.5
         for i, c in enumerate(visible_candles):
             bearish = c["close"] < c["open"] or c["close"] < 0
-            body_color = "#cc3333" if bearish else "#00cc66"
+            body_color = "#e65757" if bearish else "#22d3a6"
 
             # Wick
             self.ax.plot([i, i], [c["low"], c["high"]],
@@ -1084,41 +1405,52 @@ class HabitTrackerApp:
                              color="#ffcc44", linewidth=2.5,
                              zorder=5, solid_capstyle="round")
 
-        self.ax.axhline(y=0, color="#444444", linewidth=0.8,
+        self.ax.axhline(y=0, color="#3b4f67", linewidth=0.8,
                         linestyle="--", zorder=1)
 
         visible_x = list(range(self._visible_len))
 
-        self.ax.set_facecolor("#0f0f0f")
+        self.ax.set_facecolor("#0b1220")
         self.ax.set_xlim(-0.8, self._visible_len - 0.2)
         self.ax.set_xticks(visible_x)
+        if self._chart_timeframe in {"1D", "SESSION"}:
+            labels = [c.get("x_label", c["date"][5:]) for c in visible_candles]
+        else:
+            labels = [c["date"][5:] for c in visible_candles]
         self.ax.set_xticklabels(
-            [c["date"][5:] for c in visible_candles],
-            rotation=40, ha="right", color="#888888", fontsize=8)
+            labels,
+            rotation=40, ha="right", color="#8ea1b9", fontsize=8)
 
         # Dynamic Y-scale for the visible timeframe.
         pad = max(visible_span * 0.10, min_body_height * 1.5)
         self.ax.set_ylim(y_min - pad, y_max + pad)
 
-        self.ax.yaxis.set_tick_params(colors="#888888", labelsize=8)
+        self.ax.yaxis.set_tick_params(colors="#8ea1b9", labelsize=8)
         for spine in self.ax.spines.values():
-            spine.set_color("#222222")
-        self.ax.tick_params(colors="#888888", which="both")
-        self.ax.set_ylabel("Cumulative Points", color="#888888", fontsize=9)
+            spine.set_color("#1f2d42")
+        self.ax.tick_params(colors="#8ea1b9", which="both")
+        self.ax.set_ylabel("Cumulative Points", color="#8ea1b9", fontsize=9)
         timeframe_label = dict(TIMEFRAME_OPTIONS).get(self._chart_timeframe, self._chart_timeframe)
         self.ax.set_title(
             f"Daily Habit Points — Candlestick View [{timeframe_label}]  (click a candle to edit)",
-            color="#aaaaaa", fontsize=10, pad=10)
-        self.ax.yaxis.grid(True, color="#1e1e1e", linewidth=0.5, zorder=0)
+            color="#d6deea", fontsize=10, pad=10)
+        self.ax.yaxis.grid(True, color="#162131", linewidth=0.6, zorder=0)
 
         self.ax.legend(
             handles=[
-                mpatches.Patch(color="#00cc66", label="Gain day"),
-                mpatches.Patch(color="#cc3333", label="Loss day"),
+                mpatches.Patch(color="#22d3a6", label="Gain day"),
+                mpatches.Patch(color="#e65757", label="Loss day"),
                 mpatches.Patch(color="#ffcc44", label="Manual close"),
             ],
             loc="upper left", fontsize=8,
-            facecolor="#111111", edgecolor="#333333", labelcolor="#aaaaaa")
+            facecolor="#111827", edgecolor="#1f2d42", labelcolor="#d6deea")
+
+        self._live_chart_text = self.ax.text(
+            0.985, 0.985, "● LIVE",
+            transform=self.ax.transAxes,
+            ha="right", va="top",
+            color="#28d7ab", fontsize=9, fontweight="bold"
+        )
 
         self.fig.tight_layout()
         self.canvas_widget.draw()

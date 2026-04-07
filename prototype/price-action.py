@@ -89,6 +89,15 @@ def ensure_session_settings(data):
         data["streak_kind"] = None
     if "streak_count" not in data:
         data["streak_count"] = 0
+    if "multiplier_settings" not in data or not isinstance(data["multiplier_settings"], dict):
+        data["multiplier_settings"] = {}
+    ms = data["multiplier_settings"]
+    if "positive_step_factor" not in ms:
+        ms["positive_step_factor"] = 3.0
+    if "negative_step_factor" not in ms:
+        ms["negative_step_factor"] = 4.0
+    if "negative_start_ratio_from_positive" not in ms:
+        ms["negative_start_ratio_from_positive"] = 0.75
 
 def parse_hhmm(raw):
     text = str(raw).strip()
@@ -440,6 +449,146 @@ class DayEditDialog(tk.Toplevel):
         self.destroy()
 
 
+class SettingsDialog(tk.Toplevel):
+    def __init__(self, parent, app):
+        super().__init__(parent)
+        self.app = app
+        self.title("Settings")
+        self.configure(bg="#0f0f0f")
+        self.resizable(False, False)
+        self.grab_set()
+        self._build()
+        self._center()
+
+    def _center(self):
+        self.update_idletasks()
+        pw = self.master.winfo_rootx() + self.master.winfo_width() // 2
+        ph = self.master.winfo_rooty() + self.master.winfo_height() // 2
+        w, h = self.winfo_width(), self.winfo_height()
+        self.geometry(f"+{pw - w//2}+{ph - h//2}")
+
+    def _build(self):
+        notebook = ttk.Notebook(self)
+        notebook.pack(fill=tk.BOTH, expand=True, padx=12, pady=12)
+
+        multipliers_tab = tk.Frame(notebook, bg="#0f0f0f")
+        config_tab = tk.Frame(notebook, bg="#0f0f0f")
+        notebook.add(multipliers_tab, text="Multipliers")
+        notebook.add(config_tab, text="Config")
+
+        ms = self.app.data.get("multiplier_settings", {})
+        self.positive_factor_var = tk.StringVar(value=str(ms.get("positive_step_factor", 3.0)))
+        self.negative_factor_var = tk.StringVar(value=str(ms.get("negative_step_factor", 4.0)))
+        self.negative_start_ratio_var = tk.StringVar(
+            value=str(ms.get("negative_start_ratio_from_positive", 0.75))
+        )
+
+        tk.Label(multipliers_tab, text="Positive step factor (>= 1.0)",
+                 bg="#0f0f0f", fg="#d6deea", font=("Segoe UI", 9)).pack(anchor="w", pady=(8, 2))
+        tk.Entry(multipliers_tab, textvariable=self.positive_factor_var,
+                 bg="#1a263a", fg="#e8e8e8", insertbackground="#e8e8e8",
+                 relief="flat", width=16).pack(anchor="w", ipady=3)
+
+        tk.Label(multipliers_tab, text="Negative step factor (>= 1.0)",
+                 bg="#0f0f0f", fg="#d6deea", font=("Segoe UI", 9)).pack(anchor="w", pady=(10, 2))
+        tk.Entry(multipliers_tab, textvariable=self.negative_factor_var,
+                 bg="#1a263a", fg="#e8e8e8", insertbackground="#e8e8e8",
+                 relief="flat", width=16).pack(anchor="w", ipady=3)
+
+        tk.Label(multipliers_tab, text="Negative start ratio from positive (0.0 - 1.0+)",
+                 bg="#0f0f0f", fg="#d6deea", font=("Segoe UI", 9)).pack(anchor="w", pady=(10, 2))
+        tk.Entry(multipliers_tab, textvariable=self.negative_start_ratio_var,
+                 bg="#1a263a", fg="#e8e8e8", insertbackground="#e8e8e8",
+                 relief="flat", width=16).pack(anchor="w", ipady=3)
+
+        tk.Button(multipliers_tab, text="Save multiplier settings",
+                  bg="#1a263a", fg="#d6e6ff", activebackground="#243653",
+                  relief="flat", command=self._save_multiplier_settings).pack(anchor="w", pady=(14, 8))
+
+        tk.Label(config_tab, text="Import / export settings configuration",
+                 bg="#0f0f0f", fg="#d6deea", font=("Segoe UI", 9)).pack(anchor="w", pady=(8, 8))
+        tk.Button(config_tab, text="Export config JSON",
+                  bg="#1a263a", fg="#8dd7ff", activebackground="#243653",
+                  relief="flat", command=self._export_config).pack(anchor="w", pady=(0, 6))
+        tk.Button(config_tab, text="Import config JSON",
+                  bg="#1a263a", fg="#ffd49a", activebackground="#243653",
+                  relief="flat", command=self._import_config).pack(anchor="w")
+
+    def _save_multiplier_settings(self):
+        try:
+            positive = float(self.positive_factor_var.get().strip())
+            negative = float(self.negative_factor_var.get().strip())
+            ratio = float(self.negative_start_ratio_var.get().strip())
+        except ValueError:
+            messagebox.showerror("Invalid values", "All multiplier values must be numeric.", parent=self)
+            return
+        if positive < 1.0 or negative < 1.0 or ratio < 0.0:
+            messagebox.showerror(
+                "Invalid range",
+                "Positive/negative factors must be >= 1.0 and ratio must be >= 0.0.",
+                parent=self,
+            )
+            return
+        self.app.data.setdefault("multiplier_settings", {})
+        self.app.data["multiplier_settings"]["positive_step_factor"] = positive
+        self.app.data["multiplier_settings"]["negative_step_factor"] = negative
+        self.app.data["multiplier_settings"]["negative_start_ratio_from_positive"] = ratio
+        save_data(self.app.data)
+        messagebox.showinfo("Saved", "Multiplier settings updated.", parent=self)
+
+    def _export_config(self):
+        path = filedialog.asksaveasfilename(
+            title="Export config JSON",
+            defaultextension=".json",
+            initialfile="habit_tracker_config.json",
+            filetypes=[("JSON files", "*.json"), ("All files", "*.*")],
+            parent=self
+        )
+        if not path:
+            return
+        payload = {
+            "day_open_time": self.app.data.get("day_open_time", "04:30"),
+            "day_close_time": self.app.data.get("day_close_time", "20:30"),
+            "auto_close_enabled": bool(self.app.data.get("auto_close_enabled", False)),
+            "auto_close_time": self.app.data.get("auto_close_time", "21:00"),
+            "multiplier_settings": self.app.data.get("multiplier_settings", {}),
+        }
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(payload, f, indent=2)
+        messagebox.showinfo("Export complete", f"Config exported to:\n{path}", parent=self)
+
+    def _import_config(self):
+        path = filedialog.askopenfilename(
+            title="Import config JSON",
+            filetypes=[("JSON files", "*.json"), ("All files", "*.*")],
+            parent=self
+        )
+        if not path:
+            return
+        try:
+            with open(path, "r", encoding="utf-8") as f:
+                payload = json.load(f)
+        except Exception as exc:
+            messagebox.showerror("Import failed", f"Could not read config:\n{exc}", parent=self)
+            return
+
+        if isinstance(payload, dict):
+            self.app.data["day_open_time"] = str(payload.get("day_open_time", self.app.data.get("day_open_time", "04:30")))
+            self.app.data["day_close_time"] = str(payload.get("day_close_time", self.app.data.get("day_close_time", "20:30")))
+            self.app.data["auto_close_enabled"] = bool(payload.get("auto_close_enabled", self.app.data.get("auto_close_enabled", False)))
+            self.app.data["auto_close_time"] = str(payload.get("auto_close_time", self.app.data.get("auto_close_time", "21:00")))
+            if isinstance(payload.get("multiplier_settings"), dict):
+                self.app.data["multiplier_settings"] = payload["multiplier_settings"]
+            ensure_session_settings(self.app.data)
+            save_data(self.app.data)
+            self.app._update_display()
+            self.app._refresh_chart()
+            messagebox.showinfo("Import complete", "Config imported successfully.", parent=self)
+            self.destroy()
+            return
+        messagebox.showerror("Import failed", "Config JSON must be an object.", parent=self)
+
+
 # ──────────────────────────────────────────────────────────────────────────────
 # Main application
 # ──────────────────────────────────────────────────────────────────────────────
@@ -586,6 +735,7 @@ class HabitTrackerApp:
         csv_box.pack(fill=tk.X, pady=(0, 8))
         self._make_broker_button(csv_box, "Export CSV", self._export_csv, fg="#8dd7ff").pack(side=tk.LEFT)
         self._make_broker_button(csv_box, "Import CSV", self._import_csv, fg="#ffd49a").pack(side=tk.LEFT, padx=(6, 0))
+        self._make_broker_button(csv_box, "Settings", self._open_settings_dialog).pack(side=tk.LEFT, padx=(6, 0))
 
         ttk.Separator(left, orient="horizontal").pack(fill=tk.X, pady=6)
         ttk.Label(left, text="LOG A HABIT",
@@ -746,17 +896,29 @@ class HabitTrackerApp:
 
     # ── Actions ───────────────────────────────────────────────────────────── #
 
+    def _open_settings_dialog(self):
+        SettingsDialog(self.root, self)
+
     def _apply_streak_multiplier(self, base_points):
         """
         Consecutive habits of the same sign build a streak multiplier.
-        Negative streak growth is intentionally stronger than positive.
+        From the 3rd back-to-back habit onward:
+          - positive streaks use configured positive step factor
+          - negative streaks use configured negative step factor
+        If a negative streak starts after a positive streak, it starts at
+        the configured ratio of the current positive multiplier.
         """
+        ms = self.data.get("multiplier_settings", {})
+        pos_step_factor = max(float(ms.get("positive_step_factor", 3.0)), 1.0)
+        neg_step_factor = max(float(ms.get("negative_step_factor", 4.0)), 1.0)
+        neg_start_ratio = max(float(ms.get("negative_start_ratio_from_positive", 0.75)), 0.0)
+
         if base_points > 0:
             kind = "positive"
-            growth = 0.10
+            step_factor = pos_step_factor
         elif base_points < 0:
             kind = "negative"
-            growth = 0.25
+            step_factor = neg_step_factor
         else:
             self.data["streak_kind"] = None
             self.data["streak_count"] = 0
@@ -764,21 +926,32 @@ class HabitTrackerApp:
 
         prev_kind = self.data.get("streak_kind")
         prev_count = int(self.data.get("streak_count", 0))
+        prev_multiplier = float(self.data.get("streak_multiplier", 1.0))
         if prev_kind == kind:
             streak_count = prev_count + 1
         else:
             streak_count = 1
 
-        # Linear for first two habits; exponential from the third onward.
+        negative_base_from_positive = (
+            base_points < 0 and prev_kind == "positive" and prev_count > 0
+        )
+
+        # No boost for the first two; exponential from the third onward.
         if streak_count <= 2:
-            multiplier = 1.0 + (streak_count - 1) * growth
+            if negative_base_from_positive:
+                multiplier = max(neg_start_ratio * prev_multiplier, 1.0)
+            else:
+                multiplier = 1.0
         else:
-            # Third in a row is the pivot: growth compounds after that.
-            multiplier = (1.0 + growth) * ((1.0 + growth) ** (streak_count - 2))
+            # 3rd habit => factor^1, 4th => factor^2, etc.
+            multiplier = step_factor ** (streak_count - 2)
+            if negative_base_from_positive:
+                multiplier *= max(neg_start_ratio * prev_multiplier, 1.0)
         adjusted_points = int(round(base_points * multiplier))
 
         self.data["streak_kind"] = kind
         self.data["streak_count"] = streak_count
+        self.data["streak_multiplier"] = multiplier
         return adjusted_points, multiplier
 
     def _log_habit(self, habit):

@@ -1,0 +1,404 @@
+{
+  "habits": [
+    {
+      "name": "Exercise",
+      "points": 30,
+      "emoji": "\ud83c\udfcb\ufe0f"
+    },
+    {
+      "name": "Read 30 min",
+      "points": 20,
+      "emoji": "\ud83d\udcda"
+    },
+    {
+      "name": "Meditate",
+      "points": 15,
+      "emoji": "\ud83e\uddd8"
+    },
+    {
+      "name": "Drink 2L water",
+      "points": 10,
+      "emoji": "\ud83d\udca7"
+    },
+    {
+      "name": "Sleep 8 hrs",
+      "points": 25,
+      "emoji": "\ud83d\ude34"
+    },
+    {
+      "name": "Skipped workout",
+      "points": -200,
+      "emoji": "\u274c"
+    },
+    {
+      "name": "Junk food",
+      "points": -150,
+      "emoji": "\ud83c\udf54"
+    },
+    {
+      "name": "Screen > 4 hrs",
+      "points": -100,
+      "emoji": "\ud83d\udcf1"
+    },
+    {
+      "name": "Imported daily points",
+      "points": 110,
+      "emoji": "\u2605"
+    }
+  ],
+  "log": [
+    {
+      "date": "2026-01-06",
+      "habit": "Meditate",
+      "points": 59,
+      "timestamp": "2026-01-06T03:45:04"
+    },
+    {
+      "date": "2026-01-15",
+      "habit": "Skipped workout",
+      "points": -22,
+      "timestamp": "2026-01-15T02:57:14"
+    },
+    {
+      "date": "2026-01-21",
+      "habit": "Sleep 8 hrs",
+      "points": 66,
+      "timestamp": "2026-01-21T20:41:47"
+    },
+    {
+      "date": "2026-01-22",
+      "habit": "Skipped workout",
+      "points": -152,
+      "timestamp": "2026-01-22T07:59:54"
+    },
+    {
+      "date": "2026-02-03",
+      "habit": "Screen > 4 hrs",
+      "points": -83,
+      "timestamp": "2026-02-03T07:01:48"
+    },
+    {
+      "date": "2026-02-04",
+      "habit": "Meditate",
+      "points": 37,
+      "timestamp": "2026-02-04T20:37:10"
+    },
+    {
+      "date": "2026-02-05",
+      "habit": "Junk food",
+      "points": -82,
+      "timestamp": "2026-02-05T01:36:30"
+    },
+    {
+      "date": "2026-02-11",
+      "habit": "Sleep 8 hrs",
+      "points": 72,
+      "timestamp": "2026-02-11T18:37:32"
+    },
+    {
+      "date": "2026-02-12",
+      "habit": "Skipped workout",
+      "points": -96,
+      "timestamp": "2026-02-12T21:32:35"
+    },
+    {
+      "date": "2026-02-14",
+      "habit": "Sleep 8 hrs",
+      "points": 39,
+      "timestamp": "2026-02-14T08:46:24"
+    },
+    {
+      "date": "2026-02-20",
+      "habit": "Sleep 8 hrs",
+      "points": 71,
+      "timestamp": "2026-02-20T01:10:42"
+    },
+    {
+      "date": "2026-02-22",
+      "habit": "Read 30 min",
+      "points": 99,
+      "timestamp": "2026-02-22T17:40:50"
+    },
+    {
+      "date": "2026-02-23",
+      "habit": "Skipped workout",
+      "points": -156,
+      "timestamp": "2026-02-23T09:33:59"
+    },
+    {
+      "date": "2026-03-09",
+      "habit": "Exercise",
+      "points": 74,
+      "timestamp": "2026-03-09T10:20:59"
+    },
+    {
+      "date": "2026-03-12",
+      "habit": "Skipped workout",
+      "points": -89,
+      "timestamp": "2026-03-12T11:31:51"
+    },
+    {
+      "date": "2026-03-16",
+      "habit": "Read 30 min",
+      "points": 113,
+      "timestamp": "2026-03-16T06:57:37"
+    },
+    {
+      "date": "2026-03-30",
+      "habit": "Read 30 min",
+      "points": 63,
+      "timestamp": "2026-03-30T04:02:22"
+    },
+    {
+      "date": "2026-04-07",
+      "habit": "Exercise",
+      "points": 65,
+      "timestamp": "2026-04-07T00:51:57"
+    },
+    {
+      "date": "2026-01-06",
+      "habit": "Exercise",
+      "points": 3900,
+      "base_points": 30,
+      "streak_kind": "positive",
+      "streak_count": 58,
+      "streak_multiplier": 130.0,
+      "timestamp": "2026-04-07T19:59:13.364064"
+    },
+    {
+      "date": "2026-01-06",
+      "habit": "Exercise",
+      "points": 3900,
+      "base_points": 30,
+      "streak_kind": "positive",
+      "streak_count": 59,
+      "streak_multiplier": 130.0,
+      "timestamp": "2026-04-07T19:59:24.036728"
+    },
+    {
+      "date": "2026-01-06",
+      "habit": "Read 30 min",
+      "points": 2600,
+      "base_points": 20,
+      "streak_kind": "positive",
+      "streak_count": 60,
+      "streak_multiplier": 130.0,
+      "timestamp": "2026-04-07T19:59:25.854151"
+    },
+    {
+      "date": "2026-01-06",
+      "habit": "Read 30 min",
+      "points": 2600,
+      "base_points": 20,
+      "streak_kind": "positive",
+      "streak_count": 61,
+      "streak_multiplier": 130.0,
+      "timestamp": "2026-04-07T19:59:27.343923"
+    },
+    {
+      "date": "2026-01-06",
+      "habit": "Read 30 min",
+      "points": 2600,
+      "base_points": 20,
+      "streak_kind": "positive",
+      "streak_count": 62,
+      "streak_multiplier": 130.0,
+      "timestamp": "2026-04-07T19:59:28.596031"
+    },
+    {
+      "date": "2026-01-06",
+      "habit": "Skipped workout",
+      "points": -16000,
+      "base_points": -200,
+      "streak_kind": "negative",
+      "streak_count": 1,
+      "streak_multiplier": 80.0,
+      "timestamp": "2026-04-07T20:04:31.467299"
+    },
+    {
+      "date": "2026-01-06",
+      "habit": "Meditate",
+      "points": 15,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 1,
+      "streak_multiplier": 1.0,
+      "timestamp": "2026-04-07T20:04:37.697341"
+    },
+    {
+      "date": "2026-01-06",
+      "habit": "Read 30 min",
+      "points": 20,
+      "base_points": 20,
+      "streak_kind": "positive",
+      "streak_count": 2,
+      "streak_multiplier": 1.0,
+      "timestamp": "2026-04-07T20:04:39.217563"
+    },
+    {
+      "date": "2026-01-06",
+      "habit": "Exercise",
+      "points": 90,
+      "base_points": 30,
+      "streak_kind": "positive",
+      "streak_count": 3,
+      "streak_multiplier": 3.0,
+      "timestamp": "2026-04-07T20:04:40.194611"
+    },
+    {
+      "date": "2026-01-06",
+      "habit": "Sleep 8 hrs",
+      "points": 225,
+      "base_points": 25,
+      "streak_kind": "positive",
+      "streak_count": 4,
+      "streak_multiplier": 9.0,
+      "timestamp": "2026-04-07T20:04:41.397571"
+    },
+    {
+      "date": "2026-01-06",
+      "habit": "Drink 2L water",
+      "points": 270,
+      "base_points": 10,
+      "streak_kind": "positive",
+      "streak_count": 5,
+      "streak_multiplier": 27.0,
+      "timestamp": "2026-04-07T20:04:42.932345"
+    },
+    {
+      "date": "2026-01-06",
+      "habit": "Read 30 min",
+      "points": 2600,
+      "base_points": 20,
+      "streak_kind": "positive",
+      "streak_count": 6,
+      "streak_multiplier": 130.0,
+      "timestamp": "2026-04-07T20:05:12.857303"
+    },
+    {
+      "date": "2026-01-06",
+      "habit": "Meditate",
+      "points": 1950,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 7,
+      "streak_multiplier": 130.0,
+      "timestamp": "2026-04-07T20:05:14.612380"
+    },
+    {
+      "date": "2026-01-06",
+      "habit": "Sleep 8 hrs",
+      "points": 3250,
+      "base_points": 25,
+      "streak_kind": "positive",
+      "streak_count": 8,
+      "streak_multiplier": 130.0,
+      "timestamp": "2026-04-07T20:05:16.056556"
+    },
+    {
+      "date": "2026-01-06",
+      "habit": "Drink 2L water",
+      "points": 1300,
+      "base_points": 10,
+      "streak_kind": "positive",
+      "streak_count": 9,
+      "streak_multiplier": 130.0,
+      "timestamp": "2026-04-07T20:05:17.467167"
+    },
+    {
+      "date": "2026-01-06",
+      "habit": "Exercise",
+      "points": 3900,
+      "base_points": 30,
+      "streak_kind": "positive",
+      "streak_count": 10,
+      "streak_multiplier": 130.0,
+      "timestamp": "2026-04-07T20:05:19.577394"
+    },
+    {
+      "date": "2026-01-06",
+      "habit": "Sleep 8 hrs",
+      "points": 3250,
+      "base_points": 25,
+      "streak_kind": "positive",
+      "streak_count": 11,
+      "streak_multiplier": 130.0,
+      "timestamp": "2026-04-07T20:05:23.299390"
+    },
+    {
+      "date": "2026-01-06",
+      "habit": "Imported daily points",
+      "points": 14300,
+      "base_points": 110,
+      "streak_kind": "positive",
+      "streak_count": 12,
+      "streak_multiplier": 130.0,
+      "timestamp": "2026-04-07T20:05:25.997302"
+    },
+    {
+      "date": "2026-01-06",
+      "habit": "Drink 2L water",
+      "points": 1300,
+      "base_points": 10,
+      "streak_kind": "positive",
+      "streak_count": 13,
+      "streak_multiplier": 130.0,
+      "timestamp": "2026-04-07T20:05:29.401036"
+    },
+    {
+      "date": "2026-01-06",
+      "habit": "Screen > 4 hrs",
+      "points": -8000,
+      "base_points": -100,
+      "streak_kind": "negative",
+      "streak_count": 1,
+      "streak_multiplier": 80.0,
+      "timestamp": "2026-04-07T20:05:33.567395"
+    },
+    {
+      "date": "2026-01-06",
+      "habit": "Sleep 8 hrs",
+      "points": 25,
+      "base_points": 25,
+      "streak_kind": "positive",
+      "streak_count": 1,
+      "streak_multiplier": 1.0,
+      "timestamp": "2026-04-07T20:05:38.135563"
+    },
+    {
+      "date": "2026-01-06",
+      "habit": "Drink 2L water",
+      "points": 10,
+      "base_points": 10,
+      "streak_kind": "positive",
+      "streak_count": 2,
+      "streak_multiplier": 1.0,
+      "timestamp": "2026-04-07T20:05:40.012494"
+    }
+  ],
+  "manual_close": {},
+  "current_open_day": "2026-01-06",
+  "auto_close_enabled": false,
+  "auto_close_time": "21:00",
+  "auto_last_close_date": null,
+  "day_open_time": "04:30",
+  "day_close_time": "20:30",
+  "streak_kind": "positive",
+  "streak_count": 2,
+  "candle_comments": {
+    "2025-12-28": [
+      {
+        "timestamp": "2026-04-07T19:31:53.388061",
+        "text": "most productive time in a while"
+      }
+    ]
+  },
+  "multiplier_settings": {
+    "positive_step_factor": 4.0,
+    "negative_step_factor": 4.0,
+    "negative_start_ratio_from_positive": 0.75,
+    "positive_cap": 130.0,
+    "negative_cap": 80.0
+  },
+  "streak_multiplier": 1.0
+}

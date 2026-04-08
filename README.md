@@ -1,2 +1,2 @@
 # Price-Action
-Performance journal inspired by stock price action and fundamentals.
+Performance journal inspired by stock price action and fu

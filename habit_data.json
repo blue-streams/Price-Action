@@ -3,47 +3,161 @@
     {
       "name": "Exercise",
       "points": 30,
-      "emoji": "\ud83c\udfcb\ufe0f"
+      "emoji": "\ud83c\udfcb\ufe0f",
+      "impact": 5,
+      "state": "closed",
+      "instant_close": false,
+      "multiplier": 1.0,
+      "category": "General",
+      "execution_count": 4
     },
     {
       "name": "Read 30 min",
       "points": 20,
-      "emoji": "\ud83d\udcda"
+      "emoji": "\ud83d\udcda",
+      "impact": 5,
+      "state": "closed",
+      "instant_close": false,
+      "multiplier": 1.0,
+      "category": "General",
+      "execution_count": 8
     },
     {
       "name": "Meditate",
       "points": 15,
-      "emoji": "\ud83e\uddd8"
+      "emoji": "\ud83e\uddd8",
+      "impact": 5,
+      "state": "closed",
+      "instant_close": false,
+      "multiplier": 1.0,
+      "category": "General",
+      "execution_count": 64
     },
     {
       "name": "Drink 2L water",
       "points": 10,
-      "emoji": "\ud83d\udca7"
+      "emoji": "\ud83d\udca7",
+      "impact": 5,
+      "state": "closed",
+      "instant_close": false,
+      "multiplier": 1.0,
+      "category": "General",
+      "execution_count": 15
     },
     {
       "name": "Sleep 8 hrs",
       "points": 25,
-      "emoji": "\ud83d\ude34"
+      "emoji": "\ud83d\ude34",
+      "impact": 5,
+      "state": "closed",
+      "instant_close": false,
+      "multiplier": 1.0,
+      "category": "General",
+      "execution_count": 9
     },
     {
       "name": "Skipped workout",
       "points": -200,
-      "emoji": "\u274c"
+      "emoji": "\u274c",
+      "impact": 5,
+      "state": "closed",
+      "instant_close": false,
+      "multiplier": 1.0,
+      "category": "General",
+      "execution_count": 16
     },
     {
       "name": "Junk food",
       "points": -150,
-      "emoji": "\ud83c\udf54"
+      "emoji": "\ud83c\udf54",
+      "impact": 5,
+      "state": "closed",
+      "instant_close": false,
+      "multiplier": 1.0,
+      "category": "General",
+      "execution_count": 5
     },
     {
       "name": "Screen > 4 hrs",
       "points": -100,
-      "emoji": "\ud83d\udcf1"
+      "emoji": "\ud83d\udcf1",
+      "impact": 5,
+      "state": "closed",
+      "instant_close": false,
+      "multiplier": 1.0,
+      "category": "General",
+      "execution_count": 15
     },
     {
       "name": "Imported daily points",
       "points": 110,
-      "emoji": "\u2605"
+      "emoji": "\u2605",
+      "impact": 5,
+      "state": "closed",
+      "instant_close": false,
+      "multiplier": 1.0,
+      "category": "General",
+      "execution_count": 118
+    },
+    {
+      "name": "habit name",
+      "points": 100,
+      "emoji": "\u2605",
+      "impact": 10.0,
+      "state": "closed",
+      "instant_close": true,
+      "multiplier": 15.0,
+      "category": "General",
+      "execution_count": 1
+    },
+    {
+      "name": "visited university",
+      "points": 50,
+      "emoji": "\u2605",
+      "category": "General",
+      "execution_count": 3
+    },
+    {
+      "name": "Testrun",
+      "points": 20,
+      "emoji": "\u2605",
+      "live_tracking": {
+        "enabled": true,
+        "duration_minutes": 30.0,
+        "interval_seconds": 60.0,
+        "amount": 1.0,
+        "variance": 0.15
+      },
+      "category": "General",
+      "execution_count": 19
+    },
+    {
+      "name": "Reading Studd fas",
+      "points": 20,
+      "emoji": "\u2605",
+      "live_tracking": {
+        "enabled": false,
+        "duration_minutes": 20.0,
+        "interval_seconds": 10.0,
+        "amount": 5.0,
+        "variance": 0.15
+      },
+      "category": "General",
+      "execution_count": 4
+    },
+    {
+      "name": "Test Habit",
+      "points": 20,
+      "emoji": "\u2605",
+      "live_tracking": {
+        "enabled": true,
+        "duration_minutes": 5.0,
+        "interval_seconds": 5.0,
+        "amount": 15.0,
+        "variance": 0.15
+      },
+      "category": "General",
+      "execution_count": 13
     }
   ],
   "log": [
@@ -649,896 +763,2207 @@
     },
     {
       "date": "2025-12-28",
-      "habit": "Read 30 min",
-      "points": 20,
-      "timestamp": "2026-04-06T18:42:14.672782"
+      "habit": "Drink 2L water",
+      "points": 42,
+      "base_points": 10,
+      "streak_kind": "positive",
+      "streak_count": 16,
+      "streak_multiplier": 4.177248169415656,
+      "timestamp": "2026-04-07T18:53:57.823414"
     },
     {
       "date": "2025-12-28",
-      "habit": "Read 30 min",
-      "points": 20,
-      "timestamp": "2026-04-06T18:42:15.025583"
+      "habit": "Drink 2L water",
+      "points": 46,
+      "base_points": 10,
+      "streak_kind": "positive",
+      "streak_count": 17,
+      "streak_multiplier": 4.594972986357222,
+      "timestamp": "2026-04-07T18:53:58.605293"
     },
     {
       "date": "2025-12-28",
-      "habit": "Read 30 min",
-      "points": 20,
-      "timestamp": "2026-04-06T18:42:15.517789"
+      "habit": "Drink 2L water",
+      "points": 51,
+      "base_points": 10,
+      "streak_kind": "positive",
+      "streak_count": 18,
+      "streak_multiplier": 5.054470284992944,
+      "timestamp": "2026-04-07T18:54:10.952174"
     },
     {
       "date": "2025-12-28",
-      "habit": "Read 30 min",
-      "points": 20,
-      "timestamp": "2026-04-06T18:42:15.949742"
+      "habit": "Drink 2L water",
+      "points": 56,
+      "base_points": 10,
+      "streak_kind": "positive",
+      "streak_count": 19,
+      "streak_multiplier": 5.55991731349224,
+      "timestamp": "2026-04-07T18:54:11.835125"
     },
     {
       "date": "2025-12-28",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T18:44:46.153375"
+      "habit": "Drink 2L water",
+      "points": 61,
+      "base_points": 10,
+      "streak_kind": "positive",
+      "streak_count": 20,
+      "streak_multiplier": 6.115909044841464,
+      "timestamp": "2026-04-07T18:54:12.427689"
     },
     {
       "date": "2025-12-28",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T18:44:46.675191"
+      "habit": "Drink 2L water",
+      "points": 67,
+      "base_points": 10,
+      "streak_kind": "positive",
+      "streak_count": 21,
+      "streak_multiplier": 6.727499949325611,
+      "timestamp": "2026-04-07T18:54:12.682895"
     },
     {
       "date": "2025-12-28",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T18:44:47.127578"
+      "habit": "Drink 2L water",
+      "points": 74,
+      "base_points": 10,
+      "streak_kind": "positive",
+      "streak_count": 22,
+      "streak_multiplier": 7.400249944258173,
+      "timestamp": "2026-04-07T18:54:12.901921"
     },
     {
       "date": "2025-12-28",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T18:44:47.479374"
+      "habit": "Drink 2L water",
+      "points": 81,
+      "base_points": 10,
+      "streak_kind": "positive",
+      "streak_count": 23,
+      "streak_multiplier": 8.14027493868399,
+      "timestamp": "2026-04-07T18:54:13.444305"
     },
     {
       "date": "2025-12-28",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T18:44:47.801153"
+      "habit": "Drink 2L water",
+      "points": 90,
+      "base_points": 10,
+      "streak_kind": "positive",
+      "streak_count": 24,
+      "streak_multiplier": 8.95430243255239,
+      "timestamp": "2026-04-07T18:54:14.066694"
     },
     {
       "date": "2025-12-28",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T18:44:48.053399"
+      "habit": "Drink 2L water",
+      "points": 98,
+      "base_points": 10,
+      "streak_kind": "positive",
+      "streak_count": 25,
+      "streak_multiplier": 9.84973267580763,
+      "timestamp": "2026-04-07T18:54:14.489585"
     },
     {
       "date": "2025-12-28",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T18:44:48.385589"
+      "habit": "Meditate",
+      "points": 163,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 26,
+      "streak_multiplier": 10.834705943388393,
+      "timestamp": "2026-04-07T18:54:23.542561"
     },
     {
       "date": "2025-12-28",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T18:44:48.717834"
+      "habit": "Meditate",
+      "points": 179,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 27,
+      "streak_multiplier": 11.918176537727234,
+      "timestamp": "2026-04-07T18:54:24.328419"
     },
     {
       "date": "2025-12-28",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T18:44:48.998544"
+      "habit": "Sleep 8 hrs",
+      "points": 328,
+      "base_points": 25,
+      "streak_kind": "positive",
+      "streak_count": 28,
+      "streak_multiplier": 13.10999419149996,
+      "timestamp": "2026-04-07T18:54:25.529904"
     },
     {
       "date": "2025-12-28",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T18:44:49.242262"
+      "habit": "Imported daily points",
+      "points": 1586,
+      "base_points": 110,
+      "streak_kind": "positive",
+      "streak_count": 29,
+      "streak_multiplier": 14.420993610649957,
+      "timestamp": "2026-04-07T18:54:29.125390"
     },
     {
       "date": "2025-12-28",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T18:44:49.523786"
-    },
-    {
-      "date": "2025-12-28",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T18:44:49.785022"
-    },
-    {
-      "date": "2025-12-28",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T18:54:09.307787"
-    },
-    {
-      "date": "2025-12-28",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T18:54:10.329402"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T18:57:41.953084"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T18:57:42.525093"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T18:57:42.947579"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T18:57:43.130729"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T18:57:43.293183"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T18:57:43.444353"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:07:23.488848"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:07:24.330505"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:07:25.472682"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:07:35.857650"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:07:36.479147"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:07:37.002279"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:07:37.433875"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:07:37.735999"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:07:37.967887"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:07:38.159202"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:07:38.662199"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:07:38.864165"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:07:39.425998"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:07:39.618416"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:07:39.780656"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:07:39.983363"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:07:40.154406"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:07:40.337330"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:07:40.538694"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:07:40.750915"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:07:41.092659"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:07:41.285068"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:07:41.486884"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:07:41.658323"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:07:41.850707"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:07:42.042768"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:07:42.224522"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:07:42.547313"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:07:42.719728"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:20:35.437404"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Read 30 min",
-      "points": 20,
-      "timestamp": "2026-04-06T19:20:36.540067"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Read 30 min",
-      "points": 20,
-      "timestamp": "2026-04-06T19:20:37.323006"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Read 30 min",
-      "points": 20,
-      "timestamp": "2026-04-06T19:20:40.206714"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:20:40.899862"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:20:54.567351"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:20:54.990054"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:20:55.301923"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:20:55.564080"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:20:55.976612"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:20:56.238533"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:20:56.589977"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:20:56.882100"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:20:57.143795"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:20:57.396188"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:20:57.877259"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:20:58.060251"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:20:58.231960"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:20:58.436276"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:20:58.610680"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:20:58.793293"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:20:58.965053"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:20:59.128562"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:20:59.280821"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:20:59.453620"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:20:59.645185"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:20:59.816954"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:20:59.978711"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:00.161329"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:00.324538"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:06.594682"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:06.837930"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:07.075086"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:07.317706"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:07.589242"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:07.820732"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:08.051367"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:08.287971"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:08.526460"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:08.764277"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:08.990555"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:09.216665"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:09.506548"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:09.768579"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:10.006137"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:10.236690"
-    },
-    {
-      "date": "2025-12-29",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:10.471611"
-    },
-    {
-      "date": "2025-12-30",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:17.933879"
-    },
-    {
-      "date": "2025-12-30",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:23.628719"
-    },
-    {
-      "date": "2025-12-30",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:23.852040"
-    },
-    {
-      "date": "2025-12-30",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:24.154913"
-    },
-    {
-      "date": "2025-12-30",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:24.375797"
-    },
-    {
-      "date": "2025-12-30",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:24.739228"
-    },
-    {
-      "date": "2025-12-30",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:24.996176"
-    },
-    {
-      "date": "2025-12-30",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:26.404027"
-    },
-    {
-      "date": "2025-12-30",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:26.638623"
-    },
-    {
-      "date": "2025-12-30",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:26.872550"
-    },
-    {
-      "date": "2025-12-30",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:27.102047"
-    },
-    {
-      "date": "2025-12-30",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:27.338896"
-    },
-    {
-      "date": "2025-12-30",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:27.570274"
-    },
-    {
-      "date": "2025-12-30",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:27.802131"
-    },
-    {
-      "date": "2025-12-30",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:28.100441"
-    },
-    {
-      "date": "2025-12-30",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:28.422700"
-    },
-    {
-      "date": "2025-12-30",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:28.689821"
-    },
-    {
-      "date": "2025-12-30",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:28.947592"
-    },
-    {
-      "date": "2025-12-30",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:21:29.231066"
-    },
-    {
-      "date": "2025-12-30",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:22:02.640899"
-    },
-    {
-      "date": "2025-12-30",
-      "habit": "Exercise",
-      "points": 30,
-      "timestamp": "2026-04-06T19:22:03.253171"
-    },
-    {
-      "date": "2025-12-30",
       "habit": "Screen > 4 hrs",
       "points": -100,
-      "timestamp": "2026-04-06T19:33:34.007494"
+      "base_points": -100,
+      "streak_kind": "negative",
+      "streak_count": 1,
+      "streak_multiplier": 1.0,
+      "timestamp": "2026-04-07T18:54:31.396215"
     },
     {
-      "date": "2025-12-30",
-      "habit": "Junk food",
-      "points": -150,
-      "timestamp": "2026-04-06T19:33:40.198378"
+      "date": "2025-12-28",
+      "habit": "Screen > 4 hrs",
+      "points": -125,
+      "base_points": -100,
+      "streak_kind": "negative",
+      "streak_count": 2,
+      "streak_multiplier": 1.25,
+      "timestamp": "2026-04-07T18:54:32.654252"
     },
     {
-      "date": "2025-12-30",
-      "habit": "Junk food",
-      "points": -150,
-      "timestamp": "2026-04-06T19:33:40.590760"
+      "date": "2025-12-28",
+      "habit": "Skipped workout",
+      "points": -900,
+      "base_points": -200,
+      "streak_kind": "negative",
+      "streak_count": 3,
+      "streak_multiplier": 4.5,
+      "timestamp": "2026-04-07T19:17:46.109498"
     },
     {
-      "date": "2025-12-30",
+      "date": "2025-12-28",
       "habit": "Junk food",
-      "points": -150,
-      "timestamp": "2026-04-06T19:33:41.033045"
+      "points": -3038,
+      "base_points": -150,
+      "streak_kind": "negative",
+      "streak_count": 4,
+      "streak_multiplier": 20.25,
+      "timestamp": "2026-04-07T19:17:50.382389"
     },
     {
-      "date": "2025-12-30",
-      "habit": "Junk food",
-      "points": -150,
-      "timestamp": "2026-04-06T19:33:41.365140"
+      "date": "2025-12-28",
+      "habit": "Screen > 4 hrs",
+      "points": -9112,
+      "base_points": -100,
+      "streak_kind": "negative",
+      "streak_count": 5,
+      "streak_multiplier": 91.125,
+      "timestamp": "2026-04-07T19:17:53.954406"
     },
     {
-      "date": "2025-12-30",
-      "habit": "Junk food",
-      "points": -150,
-      "timestamp": "2026-04-06T19:33:41.606807"
+      "date": "2025-12-28",
+      "habit": "Sleep 8 hrs",
+      "points": 25,
+      "base_points": 25,
+      "streak_kind": "positive",
+      "streak_count": 1,
+      "streak_multiplier": 1.0,
+      "timestamp": "2026-04-07T19:17:56.847602"
     },
     {
-      "date": "2025-12-30",
-      "habit": "Junk food",
-      "points": -150,
-      "timestamp": "2026-04-06T19:33:41.892107"
+      "date": "2025-12-28",
+      "habit": "Drink 2L water",
+      "points": 10,
+      "base_points": 10,
+      "streak_kind": "positive",
+      "streak_count": 2,
+      "streak_multiplier": 1.0,
+      "timestamp": "2026-04-07T19:17:59.006975"
     },
     {
-      "date": "2025-12-30",
-      "habit": "Junk food",
-      "points": -150,
-      "timestamp": "2026-04-06T19:33:42.137759"
+      "date": "2025-12-28",
+      "habit": "Read 30 min",
+      "points": 60,
+      "base_points": 20,
+      "streak_kind": "positive",
+      "streak_count": 3,
+      "streak_multiplier": 3.0,
+      "timestamp": "2026-04-07T19:18:03.174392"
     },
     {
-      "date": "2025-12-30",
-      "habit": "Junk food",
-      "points": -150,
-      "timestamp": "2026-04-06T19:33:42.379356"
+      "date": "2025-12-28",
+      "habit": "Imported daily points",
+      "points": 2228,
+      "base_points": 110,
+      "streak_kind": "positive",
+      "streak_count": 4,
+      "streak_multiplier": 20.25,
+      "timestamp": "2026-04-07T19:18:30.042368"
     },
     {
-      "date": "2025-12-30",
-      "habit": "Junk food",
-      "points": -150,
-      "timestamp": "2026-04-06T19:33:42.616293"
+      "date": "2025-12-28",
+      "habit": "habit name",
+      "points": 9112,
+      "base_points": 100,
+      "streak_kind": "positive",
+      "streak_count": 5,
+      "streak_multiplier": 91.125,
+      "timestamp": "2026-04-07T19:18:32.995848"
     },
     {
-      "date": "2025-12-30",
-      "habit": "Junk food",
-      "points": -150,
-      "timestamp": "2026-04-06T19:33:42.855564"
+      "date": "2025-12-28",
+      "habit": "visited university",
+      "points": 20503,
+      "base_points": 50,
+      "streak_kind": "positive",
+      "streak_count": 6,
+      "streak_multiplier": 410.0625,
+      "timestamp": "2026-04-07T19:18:35.917345"
     },
     {
-      "date": "2025-12-30",
+      "date": "2025-12-28",
       "habit": "Junk food",
-      "points": -150,
-      "timestamp": "2026-04-06T19:33:43.099254"
+      "points": -46132,
+      "base_points": -150,
+      "streak_kind": "negative",
+      "streak_count": 1,
+      "streak_multiplier": 307.546875,
+      "timestamp": "2026-04-07T19:18:39.209349"
     },
     {
-      "date": "2025-12-30",
-      "habit": "Junk food",
-      "points": -150,
-      "timestamp": "2026-04-06T19:33:43.344831"
+      "date": "2025-12-28",
+      "habit": "Skipped workout",
+      "points": -200,
+      "base_points": -200,
+      "streak_kind": "negative",
+      "streak_count": 2,
+      "streak_multiplier": 1.0,
+      "timestamp": "2026-04-07T19:18:43.591504"
     },
     {
-      "date": "2025-12-30",
-      "habit": "Junk food",
-      "points": -150,
-      "timestamp": "2026-04-06T19:33:43.586821"
+      "date": "2025-12-28",
+      "habit": "Skipped workout",
+      "points": -900,
+      "base_points": -200,
+      "streak_kind": "negative",
+      "streak_count": 3,
+      "streak_multiplier": 4.5,
+      "timestamp": "2026-04-07T19:18:45.222320"
     },
     {
-      "date": "2025-12-30",
-      "habit": "Junk food",
-      "points": -150,
-      "timestamp": "2026-04-06T19:33:43.900153"
+      "date": "2025-12-28",
+      "habit": "Skipped workout",
+      "points": -4050,
+      "base_points": -200,
+      "streak_kind": "negative",
+      "streak_count": 4,
+      "streak_multiplier": 20.25,
+      "timestamp": "2026-04-07T19:18:46.357597"
     },
     {
-      "date": "2025-12-30",
-      "habit": "Junk food",
-      "points": -150,
-      "timestamp": "2026-04-06T19:33:44.175628"
+      "date": "2025-12-28",
+      "habit": "Read 30 min",
+      "points": 20,
+      "base_points": 20,
+      "streak_kind": "positive",
+      "streak_count": 1,
+      "streak_multiplier": 1.0,
+      "timestamp": "2026-04-07T20:12:51.872966"
     },
     {
-      "date": "2025-12-30",
-      "habit": "Junk food",
-      "points": -150,
-      "timestamp": "2026-04-06T19:33:44.443651"
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 15,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 2,
+      "streak_multiplier": 1.0,
+      "timestamp": "2026-04-07T20:13:02.859941"
     },
     {
-      "date": "2025-12-30",
-      "habit": "Junk food",
-      "points": -150,
-      "timestamp": "2026-04-06T19:33:44.705652"
+      "date": "2025-12-28",
+      "habit": "Read 30 min",
+      "points": 60,
+      "base_points": 20,
+      "streak_kind": "positive",
+      "streak_count": 3,
+      "streak_multiplier": 3.0,
+      "timestamp": "2026-04-07T20:13:06.451509"
     },
     {
-      "date": "2025-12-30",
-      "habit": "Junk food",
-      "points": -150,
-      "timestamp": "2026-04-06T19:33:44.943747"
+      "date": "2025-12-28",
+      "habit": "Sleep 8 hrs",
+      "points": 225,
+      "base_points": 25,
+      "streak_kind": "positive",
+      "streak_count": 4,
+      "streak_multiplier": 9.0,
+      "timestamp": "2026-04-07T20:13:09.113070"
     },
     {
-      "date": "2025-12-30",
-      "habit": "Junk food",
-      "points": -150,
-      "timestamp": "2026-04-06T19:33:45.186001"
+      "date": "2025-12-28",
+      "habit": "Drink 2L water",
+      "points": 270,
+      "base_points": 10,
+      "streak_kind": "positive",
+      "streak_count": 5,
+      "streak_multiplier": 27.0,
+      "timestamp": "2026-04-07T20:13:10.943005"
     },
     {
-      "date": "2025-12-30",
-      "habit": "Junk food",
-      "points": -150,
-      "timestamp": "2026-04-06T19:33:45.421992"
+      "date": "2025-12-28",
+      "habit": "Exercise",
+      "points": 2430,
+      "base_points": 30,
+      "streak_kind": "positive",
+      "streak_count": 6,
+      "streak_multiplier": 81.0,
+      "timestamp": "2026-04-07T20:13:13.081852"
     },
     {
-      "date": "2025-12-30",
-      "habit": "Junk food",
-      "points": -150,
-      "timestamp": "2026-04-06T19:33:45.661641"
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 7,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:17.737838"
     },
     {
-      "date": "2025-12-30",
-      "habit": "Junk food",
-      "points": -150,
-      "timestamp": "2026-04-06T19:33:45.941355"
+      "date": "2025-12-28",
+      "habit": "Read 30 min",
+      "points": 2000,
+      "base_points": 20,
+      "streak_kind": "positive",
+      "streak_count": 8,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:19.189181"
     },
     {
-      "date": "2025-12-30",
-      "habit": "Junk food",
-      "points": -150,
-      "timestamp": "2026-04-06T19:33:46.219903"
+      "date": "2025-12-28",
+      "habit": "Sleep 8 hrs",
+      "points": 2500,
+      "base_points": 25,
+      "streak_kind": "positive",
+      "streak_count": 9,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:20.571653"
     },
     {
-      "date": "2025-12-30",
-      "habit": "Junk food",
-      "points": -150,
-      "timestamp": "2026-04-06T19:33:46.461158"
+      "date": "2025-12-28",
+      "habit": "Read 30 min",
+      "points": 2000,
+      "base_points": 20,
+      "streak_kind": "positive",
+      "streak_count": 10,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:21.963726"
     },
     {
-      "date": "2025-12-30",
-      "habit": "Junk food",
-      "points": -150,
-      "timestamp": "2026-04-06T19:33:46.701214"
+      "date": "2025-12-28",
+      "habit": "Drink 2L water",
+      "points": 1000,
+      "base_points": 10,
+      "streak_kind": "positive",
+      "streak_count": 11,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:22.783227"
     },
     {
-      "date": "2025-12-30",
+      "date": "2025-12-28",
+      "habit": "Exercise",
+      "points": 3000,
+      "base_points": 30,
+      "streak_kind": "positive",
+      "streak_count": 12,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:23.920531"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Sleep 8 hrs",
+      "points": 2500,
+      "base_points": 25,
+      "streak_kind": "positive",
+      "streak_count": 13,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:25.380338"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 14,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:26.665305"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 15,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:27.527560"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 16,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:28.899574"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 17,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:29.859452"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 18,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:30.942245"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 19,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:31.560815"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 20,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:32.019110"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 21,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:32.248396"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 22,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:32.573206"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 23,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:32.945842"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 24,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:33.171999"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 25,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:33.660333"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 26,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:34.017582"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 27,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:34.534284"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 28,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:34.761785"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 29,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:35.023288"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 30,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:35.241606"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 31,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:35.577978"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 32,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:36.262094"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 33,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:36.868586"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 34,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:37.508486"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 35,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:37.972664"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 36,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:38.453900"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 37,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:38.956960"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 38,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:39.350304"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 39,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:39.782855"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 40,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:40.241164"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 41,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:40.595486"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 42,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:41.027140"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 43,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:41.421583"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 44,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:41.838822"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 45,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:42.282832"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 46,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:42.738466"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 47,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:43.179010"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 48,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:43.630066"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 49,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:44.081378"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 50,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:44.434129"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 51,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:44.876130"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 52,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:45.318130"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 53,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:45.780232"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 54,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:51.135643"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 55,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:51.761829"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 56,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:52.155886"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 57,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:52.528896"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 58,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:52.891048"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 59,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:53.324241"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 60,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:53.787233"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 61,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:54.178859"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 62,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:54.570198"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 63,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:55.004807"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 64,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:55.336436"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 65,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:55.677037"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 66,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:56.118302"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 67,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:56.379839"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 68,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:56.813632"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 69,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:57.295729"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 70,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:13:57.617448"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Imported daily points",
+      "points": 11000,
+      "base_points": 110,
+      "streak_kind": "positive",
+      "streak_count": 71,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:14:33.939025"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Screen > 4 hrs",
+      "points": -7500,
+      "base_points": -100,
+      "streak_kind": "negative",
+      "streak_count": 1,
+      "streak_multiplier": 75.0,
+      "timestamp": "2026-04-07T20:14:35.770232"
+    },
+    {
+      "date": "2025-12-28",
       "habit": "Junk food",
       "points": -150,
-      "timestamp": "2026-04-06T19:33:46.940292"
+      "base_points": -150,
+      "streak_kind": "negative",
+      "streak_count": 2,
+      "streak_multiplier": 1.0,
+      "timestamp": "2026-04-07T20:14:37.681957"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Junk food",
+      "points": -600,
+      "base_points": -150,
+      "streak_kind": "negative",
+      "streak_count": 3,
+      "streak_multiplier": 4.0,
+      "timestamp": "2026-04-07T20:14:38.760911"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Junk food",
+      "points": -2400,
+      "base_points": -150,
+      "streak_kind": "negative",
+      "streak_count": 4,
+      "streak_multiplier": 16.0,
+      "timestamp": "2026-04-07T20:14:40.545623"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Screen > 4 hrs",
+      "points": -6400,
+      "base_points": -100,
+      "streak_kind": "negative",
+      "streak_count": 5,
+      "streak_multiplier": 64.0,
+      "timestamp": "2026-04-07T20:14:41.948682"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Screen > 4 hrs",
+      "points": -20000,
+      "base_points": -100,
+      "streak_kind": "negative",
+      "streak_count": 6,
+      "streak_multiplier": 200.0,
+      "timestamp": "2026-04-07T20:14:43.644811"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Screen > 4 hrs",
+      "points": -20000,
+      "base_points": -100,
+      "streak_kind": "negative",
+      "streak_count": 7,
+      "streak_multiplier": 200.0,
+      "timestamp": "2026-04-07T20:14:45.953588"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "visited university",
+      "points": 50,
+      "base_points": 50,
+      "streak_kind": "positive",
+      "streak_count": 1,
+      "streak_multiplier": 1.0,
+      "timestamp": "2026-04-07T20:14:49.512073"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Skipped workout",
+      "points": -200,
+      "base_points": -200,
+      "streak_kind": "negative",
+      "streak_count": 1,
+      "streak_multiplier": 1.0,
+      "timestamp": "2026-04-07T20:17:25.653522"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Skipped workout",
+      "points": -200,
+      "base_points": -200,
+      "streak_kind": "negative",
+      "streak_count": 2,
+      "streak_multiplier": 1.0,
+      "timestamp": "2026-04-07T20:17:31.604879"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Skipped workout",
+      "points": -800,
+      "base_points": -200,
+      "streak_kind": "negative",
+      "streak_count": 3,
+      "streak_multiplier": 4.0,
+      "timestamp": "2026-04-07T20:17:39.319842"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Screen > 4 hrs",
+      "points": -1600,
+      "base_points": -100,
+      "streak_kind": "negative",
+      "streak_count": 4,
+      "streak_multiplier": 16.0,
+      "timestamp": "2026-04-07T20:17:41.264250"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Screen > 4 hrs",
+      "points": -6400,
+      "base_points": -100,
+      "streak_kind": "negative",
+      "streak_count": 5,
+      "streak_multiplier": 64.0,
+      "timestamp": "2026-04-07T20:17:43.403226"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Screen > 4 hrs",
+      "points": -20000,
+      "base_points": -100,
+      "streak_kind": "negative",
+      "streak_count": 6,
+      "streak_multiplier": 200.0,
+      "timestamp": "2026-04-07T20:17:44.009773"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Screen > 4 hrs",
+      "points": -20000,
+      "base_points": -100,
+      "streak_kind": "negative",
+      "streak_count": 7,
+      "streak_multiplier": 200.0,
+      "timestamp": "2026-04-07T20:17:44.479467"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Screen > 4 hrs",
+      "points": -20000,
+      "base_points": -100,
+      "streak_kind": "negative",
+      "streak_count": 8,
+      "streak_multiplier": 200.0,
+      "timestamp": "2026-04-07T20:17:44.952526"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Screen > 4 hrs",
+      "points": -20000,
+      "base_points": -100,
+      "streak_kind": "negative",
+      "streak_count": 9,
+      "streak_multiplier": 200.0,
+      "timestamp": "2026-04-07T20:17:45.340562"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Screen > 4 hrs",
+      "points": -20000,
+      "base_points": -100,
+      "streak_kind": "negative",
+      "streak_count": 10,
+      "streak_multiplier": 200.0,
+      "timestamp": "2026-04-07T20:17:45.840552"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Imported daily points",
+      "points": 182,
+      "base_points": 110,
+      "streak_kind": "positive",
+      "streak_count": 1,
+      "streak_multiplier": 1.65,
+      "timestamp": "2026-04-07T20:17:54.233541"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Imported daily points",
+      "points": 110,
+      "base_points": 110,
+      "streak_kind": "positive",
+      "streak_count": 2,
+      "streak_multiplier": 1.0,
+      "timestamp": "2026-04-07T20:18:00.031236"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Imported daily points",
+      "points": 440,
+      "base_points": 110,
+      "streak_kind": "positive",
+      "streak_count": 3,
+      "streak_multiplier": 4.0,
+      "timestamp": "2026-04-07T20:18:00.693802"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Imported daily points",
+      "points": 1760,
+      "base_points": 110,
+      "streak_kind": "positive",
+      "streak_count": 4,
+      "streak_multiplier": 16.0,
+      "timestamp": "2026-04-07T20:18:01.396257"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Imported daily points",
+      "points": 7040,
+      "base_points": 110,
+      "streak_kind": "positive",
+      "streak_count": 5,
+      "streak_multiplier": 64.0,
+      "timestamp": "2026-04-07T20:18:01.902750"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Imported daily points",
+      "points": 11000,
+      "base_points": 110,
+      "streak_kind": "positive",
+      "streak_count": 6,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:18:02.491555"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Imported daily points",
+      "points": 11000,
+      "base_points": 110,
+      "streak_kind": "positive",
+      "streak_count": 7,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:18:03.113505"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Imported daily points",
+      "points": 11000,
+      "base_points": 110,
+      "streak_kind": "positive",
+      "streak_count": 8,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:18:03.680494"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Imported daily points",
+      "points": 11000,
+      "base_points": 110,
+      "streak_kind": "positive",
+      "streak_count": 9,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:18:04.177558"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Imported daily points",
+      "points": 11000,
+      "base_points": 110,
+      "streak_kind": "positive",
+      "streak_count": 10,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:18:04.720558"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Imported daily points",
+      "points": 11000,
+      "base_points": 110,
+      "streak_kind": "positive",
+      "streak_count": 11,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:18:05.969744"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Imported daily points",
+      "points": 11000,
+      "base_points": 110,
+      "streak_kind": "positive",
+      "streak_count": 12,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:18:07.902636"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "visited university",
+      "points": 5000,
+      "base_points": 50,
+      "streak_kind": "positive",
+      "streak_count": 13,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:18:09.402500"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Screen > 4 hrs",
+      "points": -7500,
+      "base_points": -100,
+      "streak_kind": "negative",
+      "streak_count": 1,
+      "streak_multiplier": 75.0,
+      "timestamp": "2026-04-07T20:18:10.201332"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 525,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 13,
+      "streak_multiplier": 35.0,
+      "timestamp": "2026-04-07T20:19:43.623062"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Read 30 min",
+      "points": 2000,
+      "base_points": 20,
+      "streak_kind": "positive",
+      "streak_count": 14,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:19:45.421639"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Exercise",
+      "points": 3000,
+      "base_points": 30,
+      "streak_kind": "positive",
+      "streak_count": 15,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:19:47.892728"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Drink 2L water",
+      "points": 1000,
+      "base_points": 10,
+      "streak_kind": "positive",
+      "streak_count": 16,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:19:49.845392"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Sleep 8 hrs",
+      "points": 2500,
+      "base_points": 25,
+      "streak_kind": "positive",
+      "streak_count": 17,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:19:57.505328"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 1500,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 18,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:19:59.037747"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Imported daily points",
+      "points": 11000,
+      "base_points": 110,
+      "streak_kind": "positive",
+      "streak_count": 19,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:20:01.942164"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Imported daily points",
+      "points": 11000,
+      "base_points": 110,
+      "streak_kind": "positive",
+      "streak_count": 20,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:20:03.076754"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Imported daily points",
+      "points": 11000,
+      "base_points": 110,
+      "streak_kind": "positive",
+      "streak_count": 21,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:20:04.859201"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Read 30 min",
+      "points": 2000,
+      "base_points": 20,
+      "streak_kind": "positive",
+      "streak_count": 22,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:38:31.770297"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Skipped workout",
+      "points": -15000,
+      "base_points": -200,
+      "streak_kind": "negative",
+      "streak_count": 1,
+      "streak_multiplier": 75.0,
+      "timestamp": "2026-04-07T20:38:34.931587"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Skipped workout",
+      "points": -200,
+      "base_points": -200,
+      "streak_kind": "negative",
+      "streak_count": 2,
+      "streak_multiplier": 1.0,
+      "timestamp": "2026-04-07T20:38:35.662587"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Meditate",
+      "points": 15,
+      "base_points": 15,
+      "streak_kind": "positive",
+      "streak_count": 1,
+      "streak_multiplier": 1.0,
+      "timestamp": "2026-04-07T20:38:47.879634"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Sleep 8 hrs",
+      "points": 25,
+      "base_points": 25,
+      "streak_kind": "positive",
+      "streak_count": 2,
+      "streak_multiplier": 1.0,
+      "timestamp": "2026-04-07T20:38:48.782394"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Skipped workout",
+      "points": -200,
+      "base_points": -200,
+      "streak_kind": "negative",
+      "streak_count": 1,
+      "streak_multiplier": 1.0,
+      "timestamp": "2026-04-07T20:38:49.462937"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Skipped workout",
+      "points": -200,
+      "base_points": -200,
+      "streak_kind": "negative",
+      "streak_count": 2,
+      "streak_multiplier": 1.0,
+      "timestamp": "2026-04-07T20:38:50.157698"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Skipped workout",
+      "points": -800,
+      "base_points": -200,
+      "streak_kind": "negative",
+      "streak_count": 3,
+      "streak_multiplier": 4.0,
+      "timestamp": "2026-04-07T20:38:50.407589"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Skipped workout",
+      "points": -3200,
+      "base_points": -200,
+      "streak_kind": "negative",
+      "streak_count": 4,
+      "streak_multiplier": 16.0,
+      "timestamp": "2026-04-07T20:38:50.646546"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Skipped workout",
+      "points": -12800,
+      "base_points": -200,
+      "streak_kind": "negative",
+      "streak_count": 5,
+      "streak_multiplier": 64.0,
+      "timestamp": "2026-04-07T20:38:51.053494"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Skipped workout",
+      "points": -40000,
+      "base_points": -200,
+      "streak_kind": "negative",
+      "streak_count": 6,
+      "streak_multiplier": 200.0,
+      "timestamp": "2026-04-07T20:38:51.394870"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Skipped workout",
+      "points": -40000,
+      "base_points": -200,
+      "streak_kind": "negative",
+      "streak_count": 7,
+      "streak_multiplier": 200.0,
+      "timestamp": "2026-04-07T20:38:51.697614"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Sleep 8 hrs",
+      "points": 32,
+      "base_points": 25,
+      "streak_kind": "positive",
+      "streak_count": 1,
+      "streak_multiplier": 1.3,
+      "timestamp": "2026-04-07T20:38:52.279615"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Sleep 8 hrs",
+      "points": 25,
+      "base_points": 25,
+      "streak_kind": "positive",
+      "streak_count": 2,
+      "streak_multiplier": 1.0,
+      "timestamp": "2026-04-07T20:38:52.751616"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Exercise",
+      "points": 120,
+      "base_points": 30,
+      "streak_kind": "positive",
+      "streak_count": 3,
+      "streak_multiplier": 4.0,
+      "timestamp": "2026-04-07T20:38:54.622564"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Testrun",
+      "points": 320,
+      "base_points": 20,
+      "streak_kind": "positive",
+      "streak_count": 4,
+      "streak_multiplier": 16.0,
+      "timestamp": "2026-04-07T20:47:49.821141"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Testrun",
+      "points": 1152,
+      "base_points": 18,
+      "streak_kind": "positive",
+      "streak_count": 5,
+      "streak_multiplier": 64.0,
+      "timestamp": "2026-04-07T20:47:50.064338",
+      "live_tracking": true,
+      "live_amount": 1.0,
+      "live_variance": 0.15,
+      "live_factor": 0.8805,
+      "live_remaining_ticks": 29
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Testrun",
+      "points": 2200,
+      "base_points": 22,
+      "streak_kind": "positive",
+      "streak_count": 6,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:48:50.306106",
+      "live_tracking": true,
+      "live_amount": 1.0,
+      "live_variance": 0.15,
+      "live_factor": 1.0757,
+      "live_remaining_ticks": 28
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Testrun",
+      "points": 2000,
+      "base_points": 20,
+      "streak_kind": "positive",
+      "streak_count": 7,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:49:07.438630"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Testrun",
+      "points": 2000,
+      "base_points": 20,
+      "streak_kind": "positive",
+      "streak_count": 8,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:49:41.367987"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Testrun",
+      "points": 1800,
+      "base_points": 18,
+      "streak_kind": "positive",
+      "streak_count": 9,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:49:50.548074",
+      "live_tracking": true,
+      "live_amount": 1.0,
+      "live_variance": 0.15,
+      "live_factor": 0.9215,
+      "live_remaining_ticks": 27
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Testrun",
+      "points": 2200,
+      "base_points": 22,
+      "streak_kind": "positive",
+      "streak_count": 10,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:50:50.790800",
+      "live_tracking": true,
+      "live_amount": 1.0,
+      "live_variance": 0.15,
+      "live_factor": 1.1174,
+      "live_remaining_ticks": 26
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Testrun",
+      "points": 2200,
+      "base_points": 22,
+      "streak_kind": "positive",
+      "streak_count": 11,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:51:51.052651",
+      "live_tracking": true,
+      "live_amount": 1.0,
+      "live_variance": 0.15,
+      "live_factor": 1.0877,
+      "live_remaining_ticks": 25
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Testrun",
+      "points": 1900,
+      "base_points": 19,
+      "streak_kind": "positive",
+      "streak_count": 12,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:52:51.294593",
+      "live_tracking": true,
+      "live_amount": 1.0,
+      "live_variance": 0.15,
+      "live_factor": 0.9725,
+      "live_remaining_ticks": 24
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Testrun",
+      "points": 1700,
+      "base_points": 17,
+      "streak_kind": "positive",
+      "streak_count": 13,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:53:51.551128",
+      "live_tracking": true,
+      "live_amount": 1.0,
+      "live_variance": 0.15,
+      "live_factor": 0.8584,
+      "live_remaining_ticks": 23
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Testrun",
+      "points": 1700,
+      "base_points": 17,
+      "streak_kind": "positive",
+      "streak_count": 14,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:54:51.820133",
+      "live_tracking": true,
+      "live_amount": 1.0,
+      "live_variance": 0.15,
+      "live_factor": 0.8728,
+      "live_remaining_ticks": 22
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Testrun",
+      "points": 2300,
+      "base_points": 23,
+      "streak_kind": "positive",
+      "streak_count": 15,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:55:52.113956",
+      "live_tracking": true,
+      "live_amount": 1.0,
+      "live_variance": 0.15,
+      "live_factor": 1.1457,
+      "live_remaining_ticks": 21
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Testrun",
+      "points": 2100,
+      "base_points": 21,
+      "streak_kind": "positive",
+      "streak_count": 16,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:56:52.366833",
+      "live_tracking": true,
+      "live_amount": 1.0,
+      "live_variance": 0.15,
+      "live_factor": 1.0344,
+      "live_remaining_ticks": 20
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Testrun",
+      "points": 2100,
+      "base_points": 21,
+      "streak_kind": "positive",
+      "streak_count": 17,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:57:52.776271",
+      "live_tracking": true,
+      "live_amount": 1.0,
+      "live_variance": 0.15,
+      "live_factor": 1.0312,
+      "live_remaining_ticks": 19
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Testrun",
+      "points": 2200,
+      "base_points": 22,
+      "streak_kind": "positive",
+      "streak_count": 18,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:58:53.075802",
+      "live_tracking": true,
+      "live_amount": 1.0,
+      "live_variance": 0.15,
+      "live_factor": 1.1238,
+      "live_remaining_ticks": 18
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Testrun",
+      "points": 2100,
+      "base_points": 21,
+      "streak_kind": "positive",
+      "streak_count": 19,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T20:59:53.524758",
+      "live_tracking": true,
+      "live_amount": 1.0,
+      "live_variance": 0.15,
+      "live_factor": 1.0609,
+      "live_remaining_ticks": 17
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Testrun",
+      "points": 2000,
+      "base_points": 20,
+      "streak_kind": "positive",
+      "streak_count": 20,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T21:00:53.873227",
+      "live_tracking": true,
+      "live_amount": 1.0,
+      "live_variance": 0.15,
+      "live_factor": 1.0099,
+      "live_remaining_ticks": 16
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Testrun",
+      "points": 1800,
+      "base_points": 18,
+      "streak_kind": "positive",
+      "streak_count": 21,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T21:01:54.178900",
+      "live_tracking": true,
+      "live_amount": 1.0,
+      "live_variance": 0.15,
+      "live_factor": 0.883,
+      "live_remaining_ticks": 15
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Testrun",
+      "points": 2000,
+      "base_points": 20,
+      "streak_kind": "positive",
+      "streak_count": 22,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T21:02:54.543598",
+      "live_tracking": true,
+      "live_amount": 1.0,
+      "live_variance": 0.15,
+      "live_factor": 1.0063,
+      "live_remaining_ticks": 14
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Reading Studd fas",
+      "points": 2000,
+      "base_points": 20,
+      "streak_kind": "positive",
+      "streak_count": 23,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T21:42:29.420154"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Reading Studd fas",
+      "points": 2000,
+      "base_points": 20,
+      "streak_kind": "positive",
+      "streak_count": 24,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T21:43:15.182933"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Reading Studd fas",
+      "points": 2000,
+      "base_points": 20,
+      "streak_kind": "positive",
+      "streak_count": 25,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T21:44:16.981510"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Reading Studd fas",
+      "points": 2000,
+      "base_points": 20,
+      "streak_kind": "positive",
+      "streak_count": 26,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T21:44:43.229467"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Test Habit",
+      "points": 2000,
+      "base_points": 20,
+      "streak_kind": "positive",
+      "streak_count": 27,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T21:48:18.651182"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Test Habit",
+      "points": 29500,
+      "base_points": 295,
+      "streak_kind": "positive",
+      "streak_count": 28,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T21:48:18.923837"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Test Habit",
+      "points": 26200,
+      "base_points": 262,
+      "streak_kind": "positive",
+      "streak_count": 29,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T21:48:24.264975"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Test Habit",
+      "points": 29000,
+      "base_points": 290,
+      "streak_kind": "positive",
+      "streak_count": 30,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T21:48:29.518690"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Test Habit",
+      "points": 25700,
+      "base_points": 257,
+      "streak_kind": "positive",
+      "streak_count": 31,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T21:48:34.896518"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Test Habit",
+      "points": 31000,
+      "base_points": 310,
+      "streak_kind": "positive",
+      "streak_count": 32,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T21:48:40.150113"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Test Habit",
+      "points": 27800,
+      "base_points": 278,
+      "streak_kind": "positive",
+      "streak_count": 33,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T21:48:45.473757"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Test Habit",
+      "points": 27300,
+      "base_points": 273,
+      "streak_kind": "positive",
+      "streak_count": 34,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T21:48:50.768311"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Test Habit",
+      "points": 32800,
+      "base_points": 328,
+      "streak_kind": "positive",
+      "streak_count": 35,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T21:48:56.106700"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Test Habit",
+      "points": 30000,
+      "base_points": 300,
+      "streak_kind": "positive",
+      "streak_count": 36,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T21:49:01.344134"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Test Habit",
+      "points": 26700,
+      "base_points": 267,
+      "streak_kind": "positive",
+      "streak_count": 37,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T21:49:06.658403"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Test Habit",
+      "points": 27300,
+      "base_points": 273,
+      "streak_kind": "positive",
+      "streak_count": 38,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T21:49:11.913367"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Test Habit",
+      "points": 28800,
+      "base_points": 288,
+      "streak_kind": "positive",
+      "streak_count": 39,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T21:49:17.286317"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "[TASK] Goon",
+      "points": 30,
+      "base_points": 30,
+      "streak_kind": "positive",
+      "streak_count": 39,
+      "streak_multiplier": 1.0,
+      "timestamp": "2026-04-07T22:05:32.587962"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "[TASK] Goon",
+      "points": 20,
+      "base_points": 20,
+      "streak_kind": "positive",
+      "streak_count": 39,
+      "streak_multiplier": 1.0,
+      "timestamp": "2026-04-07T22:05:47.215670"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "[TASK] Goon",
+      "points": 20,
+      "base_points": 20,
+      "streak_kind": "positive",
+      "streak_count": 39,
+      "streak_multiplier": 1.0,
+      "timestamp": "2026-04-07T22:06:01.460497"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "[TASK] goon",
+      "points": 2000,
+      "base_points": 20,
+      "streak_kind": "positive",
+      "streak_count": 40,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T22:08:39.758100"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "[TASK] goon",
+      "points": 2000,
+      "base_points": 20,
+      "streak_kind": "positive",
+      "streak_count": 41,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T22:08:44.719840"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "[TASK] goon",
+      "points": 2000,
+      "base_points": 20,
+      "streak_kind": "positive",
+      "streak_count": 42,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T22:08:46.016050"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "[TASK] goon",
+      "points": 20000,
+      "base_points": 200,
+      "streak_kind": "positive",
+      "streak_count": 43,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T22:09:01.430119"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "[TASK] ssfafs",
+      "points": 20000,
+      "base_points": 200,
+      "streak_kind": "positive",
+      "streak_count": 44,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T22:09:12.334049"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "[TASK] sfsaaf",
+      "points": 20000,
+      "base_points": 200,
+      "streak_kind": "positive",
+      "streak_count": 45,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-07T22:09:14.036120"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Read 30 min",
+      "points": 2000,
+      "base_points": 20,
+      "streak_kind": "positive",
+      "streak_count": 46,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-08T10:28:25.503885"
+    },
+    {
+      "date": "2025-12-28",
+      "habit": "Drink 2L water",
+      "points": 1000,
+      "base_points": 10,
+      "streak_kind": "positive",
+      "streak_count": 47,
+      "streak_multiplier": 100.0,
+      "timestamp": "2026-04-08T10:28:33.947126"
     }
   ],
   "manual_close": {},
-  "current_open_day": "2025-12-30",
+  "current_open_day": "2025-12-28",
   "auto_close_enabled": false,
   "auto_close_time": "21:00",
-  "auto_last_close_date": null
+  "auto_last_close_date": null,
+  "day_open_time": "06:30",
+  "day_close_time": "22:30",
+  "streak_kind": "positive",
+  "streak_count": 47,
+  "streak_multiplier": 100.0,
+  "positive_streak_carry_active": false,
+  "positive_streak_carry_multiplier": 1.0,
+  "positive_streak_carry_count": 0,
+  "multiplier_settings": {
+    "positive_step_factor": 4.0,
+    "negative_step_factor": 4.0,
+    "negative_start_ratio_from_positive": 0.75,
+    "positive_cap": 100.0,
+    "negative_cap": 200.0
+  },
+  "tasks": [
+    {
+      "id": "2026-04-07T22:03:39.781930",
+      "name": "Goon",
+      "points": 30,
+      "deadline": "2026-04-08T23:59:00",
+      "status": "completed",
+      "created": "2026-04-07T22:03:39.781930"
+    },
+    {
+      "id": "2026-04-07T22:05:45.816552",
+      "name": "Goon",
+      "points": 20,
+      "deadline": "2026-04-08T23:59:00",
+      "status": "completed",
+      "created": "2026-04-07T22:05:45.816552"
+    },
+    {
+      "id": "2026-04-07T22:05:57.103043",
+      "name": "Goon",
+      "points": 20,
+      "deadline": "2026-04-08T23:59:00",
+      "status": "completed",
+      "created": "2026-04-07T22:05:57.103043"
+    },
+    {
+      "id": "2026-04-07T22:08:29.419042",
+      "name": "goon",
+      "points": 20,
+      "deadline": "2026-04-08T23:59:00",
+      "status": "completed",
+      "created": "2026-04-07T22:08:29.419042"
+    },
+    {
+      "id": "2026-04-07T22:08:33.092159",
+      "name": "goon",
+      "points": 20,
+      "deadline": "2026-04-08T23:59:00",
+      "status": "completed",
+      "created": "2026-04-07T22:08:33.092159"
+    },
+    {
+      "id": "2026-04-07T22:08:37.426024",
+      "name": "goon",
+      "points": 20,
+      "deadline": "2026-04-08T23:59:00",
+      "status": "completed",
+      "created": "2026-04-07T22:08:37.426024"
+    },
+    {
+      "id": "2026-04-07T22:09:00.298047",
+      "name": "goon",
+      "points": 200,
+      "deadline": "2026-04-08T23:59:00",
+      "status": "completed",
+      "created": "2026-04-07T22:09:00.298047"
+    },
+    {
+      "id": "2026-04-07T22:09:08.115681",
+      "name": "ssfafs",
+      "points": 200,
+      "deadline": "2026-04-08T23:59:00",
+      "status": "completed",
+      "created": "2026-04-07T22:09:08.115681"
+    },
+    {
+      "id": "2026-04-07T22:09:11.290803",
+      "name": "sfsaaf",
+      "points": 200,
+      "deadline": "2026-04-08T23:59:00",
+      "status": "completed",
+      "created": "2026-04-07T22:09:11.290803"
+    }
+  ]
 }
